@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Variante monocroma: tinte piatte di ink, "e" bianca -->
+  <rect x="80" y="0" width="40" height="40" fill="#807d72"/>
+  <rect x="0" y="80" width="40" height="40" fill="#807d72"/>
+  <rect x="0" y="0" width="90" height="90" fill="#26251e"/>
+  <rect x="30" y="30" width="90" height="90" fill="#5a5852"/>
+  <rect x="20" y="20" width="80" height="80" fill="#ffffff"/>
+  <rect x="40" y="40" width="40" height="10" fill="#26251e"/>
+  <rect x="40" y="70" width="60" height="10" fill="#5a5852"/>
+</svg>

@@ -5,6 +5,7 @@
   <rect x="0" y="0" width="90" height="90" fill="#f54e00"/>
   <rect x="30" y="30" width="90" height="90" fill="#26251e"/>
   <rect x="20" y="20" width="80" height="80" fill="#ffffff"/>
+  <!-- La "e" è la controforma bianca: questi rect ritagliano occhio e apertura -->
   <rect x="40" y="40" width="40" height="10" fill="#f54e00"/>
   <rect x="40" y="70" width="60" height="10" fill="#26251e"/>
 </svg>
