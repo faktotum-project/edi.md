@@ -766,26 +766,6 @@ pre {
   justify-content: center;
 }
 
-/* Floating illustration */
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-16px); }
-}
-
-.ds-illustration {
-  width: 100%;
-  max-width: 420px;
-  height: auto;
-  animation: float 6s ease-in-out infinite;
-  position: relative;
-  z-index: 1;
-}
-
-.ds-illustration--sm {
-  max-width: 240px;
-}
-
 .ds-hero__eyebrow {
   color: var(--color-accent);
   font-family: var(--font-mono-ui);
@@ -1190,10 +1170,6 @@ pre {
 
   .ds-hero__media {
     order: -1;
-  }
-
-  .ds-illustration {
-    max-width: 280px;
   }
 
   .ds-hero__sub {
