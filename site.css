@@ -635,6 +635,39 @@
     }
 
 
+    /* ── Spoiler button ──────────────────────────────────────────────────── */
+    .ds-button--spoiler {
+      background: var(--color-accent);
+      color: var(--white);
+      border: 1px solid var(--color-accent);
+    }
+    .ds-button--spoiler:hover {
+      background: var(--color-accent-hover);
+    }
+    .ds-button--spoiler.is-error {
+      animation: spoiler-shake 0.4s ease-in-out;
+      background: var(--color-danger);
+      border-color: var(--color-danger);
+      color: var(--white);
+    }
+    .ds-button--spoiler.is-revealed {
+      background: transparent;
+      border-color: var(--color-text-muted);
+      color: var(--color-text-muted);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    @keyframes spoiler-shake {
+      0%, 100% { transform: translateX(0); }
+      15% { transform: translateX(-6px); }
+      30% { transform: translateX(6px); }
+      45% { transform: translateX(-4px); }
+      60% { transform: translateX(4px); }
+      75% { transform: translateX(-2px); }
+      90% { transform: translateX(2px); }
+    }
+
     /* ── Icone brand ───────────────────────────────────────────────────── */
     .icon {
       display: inline-block;
