@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>edi.md — Brand &amp; Design System</title>
+  <meta name="description" content="Style guide del brand edi.md: logo, colori, tipografia, spaziatura, componenti, icone e motion." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#26251e" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="stylesheet" href="site.css" />
+  <style>
+    /* ── Helper locali della style guide (prefisso bh-) ─────────────────── */
+    .bh-lead {
+      color: var(--color-text-muted);
+      font-size: var(--text-lg);
+      line-height: var(--leading-lg);
+      max-width: 640px;
+    }
+
+    .bh-tiles {
+      display: grid;
+      gap: var(--space-4);
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .bh-tile {
+      display: grid;
+      gap: var(--space-3);
+      justify-items: center;
+      align-content: center;
+      border: var(--border-muted);
+      border-radius: var(--radius-md);
+      background: var(--color-surface);
+      padding: var(--space-6);
+    }
+
+    .bh-tile--ink {
+      background: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .bh-tile--muted {
+      background: var(--color-bg-muted);
+    }
+
+    .bh-tile__label {
+      font-family: var(--font-mono-ui);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-soft);
+      text-align: center;
+    }
+
+    .bh-tile--ink .bh-tile__label {
+      color: rgb(250 250 247 / 0.6);
+    }
+
+    /* Costruzione: griglia modulare 120/20 in overlay */
+    .bh-construction {
+      position: relative;
+      width: 240px;
+    }
+
+    .bh-construction img {
+      width: 100%;
+      display: block;
+    }
+
+    .bh-construction::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        repeating-linear-gradient(to right, rgb(250 250 247 / 0.55) 0 1px, transparent 1px calc(100% / 6)),
+        repeating-linear-gradient(to bottom, rgb(250 250 247 / 0.55) 0 1px, transparent 1px calc(100% / 6));
+      outline: 1px solid rgb(38 37 30 / 0.3);
+    }
+
+    /* Clearspace = un modulo (1/6 del lato) */
+    .bh-clearspace {
+      display: inline-block;
+      border: 1px dashed var(--color-text-soft);
+      padding: 40px; /* un modulo alla scala 240px */
+    }
+
+    .bh-clearspace img {
+      width: 240px;
+      display: block;
+    }
+
+    .bh-dont {
+      position: relative;
+    }
+
+    .bh-dont::before {
+      content: "✕";
+      position: absolute;
+      top: var(--space-3);
+      right: var(--space-3);
+      z-index: 1;
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      background: var(--color-danger);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: var(--radius-xs);
+    }
+
+    /* ── Colori ──────────────────────────────────────────────────────────── */
+    .bh-swatches {
+      display: grid;
+      gap: var(--space-4);
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .bh-swatch {
+      border: var(--border-muted);
+      border-radius: var(--radius-md);
+      background: var(--color-surface);
+      overflow: hidden;
+    }
+
+    .bh-swatch__chip {
+      height: 72px;
+      border-bottom: var(--border-muted);
+    }
+
+    .bh-swatch__meta {
+      display: grid;
+      gap: 2px;
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-xs);
+      line-height: var(--leading-xs);
+    }
+
+    .bh-swatch__name {
+      font-weight: 700;
+      font-size: var(--text-sm);
+    }
+
+    .bh-swatch__var {
+      font-family: var(--font-mono-ui);
+      color: var(--color-text-muted);
+    }
+
+    .bh-swatch__role {
+      color: var(--color-text-soft);
+    }
+
+    /* ── Tipografia ─────────────────────────────────────────────────────── */
+    .bh-type-row {
+      display: grid;
+      grid-template-columns: 140px minmax(0, 1fr);
+      align-items: baseline;
+      gap: var(--space-4);
+      border-bottom: var(--border-muted);
+      padding-block: var(--space-4);
+    }
+
+    .bh-type-row:last-child {
+      border-bottom: 0;
+    }
+
+    .bh-type-meta {
+      font-family: var(--font-mono-ui);
+      font-size: var(--text-xs);
+      color: var(--color-text-soft);
+    }
+
+    /* ── Spaziatura & forme ─────────────────────────────────────────────── */
+    .bh-space-row {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      align-items: center;
+      gap: var(--space-4);
+      padding-block: var(--space-1);
+    }
+
+    .bh-space-bar {
+      height: 14px;
+      background: var(--color-accent);
+    }
+
+    .bh-shape-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-5);
+      align-items: flex-end;
+    }
+
+    .bh-radius-tile {
+      width: 88px;
+      height: 88px;
+      display: grid;
+      place-items: end center;
+      padding-bottom: var(--space-2);
+      background: var(--color-bg-muted);
+      border: 2px solid var(--ink);
+      font-family: var(--font-mono-ui);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    /* ── Icone ──────────────────────────────────────────────────────────── */
+    .bh-icons {
+      display: grid;
+      gap: var(--space-4);
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
+
+    .bh-icon-cell {
+      display: grid;
+      gap: var(--space-3);
+      justify-items: center;
+      border: var(--border-muted);
+      border-radius: var(--radius-md);
+      background: var(--color-surface);
+      padding: var(--space-4);
+    }
+
+    .bh-icon-cell img {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* ── Tabelle spec ───────────────────────────────────────────────────── */
+    .bh-spec {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+    }
+
+    .bh-spec th,
+    .bh-spec td {
+      border-bottom: var(--border-muted);
+      padding: var(--space-2) var(--space-3);
+      text-align: left;
+    }
+
+    .bh-spec th {
+      font-family: var(--font-mono-ui);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-soft);
+      font-weight: 500;
+    }
+
+    .bh-spec td:first-child {
+      font-family: var(--font-mono-ui);
+      white-space: nowrap;
+    }
+
+    /* Demo contact strip compatta */
+    .bh-strip-demo {
+      margin-block: 0;
+      width: 100%;
+      padding-block: var(--space-7);
+    }
+
+    @media (max-width: 820px) {
+      .bh-type-row,
+      .bh-space-row {
+        grid-template-columns: 1fr;
+        gap: var(--space-1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="site-nav" aria-label="Navigazione principale">
+    <div class="site-nav__inner">
+      <a href="index.html" class="brand-wordmark" aria-label="edi.md — home">
+        <svg viewBox="0 0 800 200" fill="none" aria-hidden="true">
+          <text x="385" y="126" font-family="'Inter', system-ui, 'Helvetica Neue', sans-serif" font-size="72" font-weight="400" letter-spacing="-2.16" fill="#26251e" text-anchor="end">edi</text>
+          <text x="385" y="126" font-family="'Inter', system-ui, 'Helvetica Neue', sans-serif" font-size="72" font-weight="400" letter-spacing="-2.16" fill="#f54e00" text-anchor="start">.md</text>
+        </svg>
+      </a>
+      <ul class="site-nav__links">
+        <li><a href="index.html" class="site-nav__link">← Torna al sito</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Intro -->
+  <section class="section" aria-labelledby="brand-title">
+    <div class="section__inner">
+      <div class="section__header">
+        <p class="section__eyebrow">Style guide</p>
+        <h1 class="section__title" id="brand-title" style="font-size: var(--text-3xl); line-height: var(--leading-3xl); letter-spacing: -0.03em;">Brand &amp; Design System</h1>
+      </div>
+      <p class="bh-lead">
+        L'identità di edi.md è costruita su una regola sola: geometria ortogonale, angoli vivi,
+        terminali piatti. Il monogramma la definisce, icone e componenti la ereditano.
+      </p>
+    </div>
+  </section>
+
+  <!-- 01 Logo -->
+  <section class="section section--alt" id="logo" aria-labelledby="logo-title">
+    <div class="section__inner">
+      <div class="section__header">
+        <span class="section__number" aria-hidden="true">01</span>
+        <p class="section__eyebrow">Marchio</p>
+        <h2 class="section__title" id="logo-title">Logo</h2>
+      </div>
+
+      <div class="ds-stack" style="gap: var(--space-7);">
+        <div>
+          <h3 class="ds-heading-4">Monogramma</h3>
+          <p class="bh-lead" style="font-size: var(--text-md); margin-bottom: var(--space-5);">
+            Una "e" minuscola in controforma bianca, ritagliata da blocchi sovrapposti di colore.
+            Griglia modulare 120×120, modulo 20: solo rettangoli, zero curve.
+          </p>
+          <div class="bh-tiles">
+            <div class="bh-tile">
+              <img src="assets/brand/mark.svg" width="120" height="120" alt="Monogramma canonico">
+              <span class="bh-tile__label">mark.svg — canonico</span>
+            </div>
+            <div class="bh-tile">
+              <img src="assets/brand/mark-mono.svg" width="120" height="120" alt="Monogramma monocromo">
+              <span class="bh-tile__label">mark-mono.svg — un colore</span>
+            </div>
+            <div class="bh-tile bh-tile--ink">
+              <img src="assets/brand/mark-inverse.svg" width="120" height="120" alt="Monogramma per fondi scuri">
+              <span class="bh-tile__label">mark-inverse.svg — fondi ink</span>
+            </div>
+            <div class="bh-tile bh-tile--muted">
+              <img src="assets/brand/mark-16.svg" width="32" height="32" alt="Variante favicon" style="image-rendering: pixelated;">
+              <span class="bh-tile__label">mark-16.svg — solo favicon ≤16px</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="ds-heading-4">Lockup</h3>
+          <div class="bh-tiles" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+            <div class="bh-tile">
+              <img src="assets/brand/lockup.svg" style="height: 64px; width: auto;" alt="Lockup su fondo chiaro">
+              <span class="bh-tile__label">lockup.svg — gap un modulo</span>
+            </div>
+            <div class="bh-tile bh-tile--ink">
+              <img src="assets/brand/lockup-dark.svg" style="height: 64px; width: auto;" alt="Lockup su fondo scuro">
+              <span class="bh-tile__label">lockup-dark.svg</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-cluster" style="align-items: flex-start; gap: var(--space-7);">
+          <div>
+            <h3 class="ds-heading-4">Costruzione</h3>
+            <div class="bh-construction">
+              <img src="assets/brand/mark.svg" alt="Monogramma con griglia modulare in overlay">
+            </div>
+            <p class="bh-tile__label" style="margin-top: var(--space-3); text-align: left;">Griglia 120 — modulo 20 (6×6)</p>
+          </div>
+          <div>
+            <h3 class="ds-heading-4">Clearspace</h3>
+            <div class="bh-clearspace">
+              <img src="assets/brand/mark.svg" alt="Monogramma con area di rispetto">
+            </div>
+            <p class="bh-tile__label" style="margin-top: var(--space-3); text-align: left;">Area di rispetto = un modulo</p>
+          </div>
+          <div>
+            <h3 class="ds-heading-4">Dimensioni minime</h3>
+            <div class="ds-cluster" style="align-items: flex-end;">
+              <img src="assets/brand/mark.svg" width="16" height="16" alt="">
+              <img src="assets/brand/mark.svg" width="32" height="32" alt="">
+              <img src="assets/brand/lockup.svg" style="height: 32px; width: auto;" alt="">
+            </div>
+            <p class="bh-tile__label" style="margin-top: var(--space-3); text-align: left;">mark ≥ 16px · lockup ≥ 96px</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="ds-heading-4">Don'ts</h3>
+          <div class="bh-tiles">
+            <div class="bh-tile bh-dont">
+              <img src="assets/brand/mark.svg" width="96" height="96" style="transform: rotate(22deg);" alt="">
+              <span class="bh-tile__label">Non ruotare</span>
+            </div>
+            <div class="bh-tile bh-dont">
+              <img src="assets/brand/mark.svg" width="96" height="96" style="filter: hue-rotate(150deg);" alt="">
+              <span class="bh-tile__label">Non ricolorare fuori palette</span>
+            </div>
+            <div class="bh-tile bh-dont">
+              <img src="assets/brand/mark.svg" width="96" height="96" style="border-radius: 24px;" alt="">
+              <span class="bh-tile__label">Non arrotondare gli angoli</span>
+            </div>
+            <div class="bh-tile bh-dont">
+              <div class="ds-cluster" style="gap: var(--space-4);">
+                <img src="assets/brand/mark.svg" width="44" height="44" style="clip-path: inset(0 50% 0 0);" alt="">
+                <img src="assets/brand/mark.svg" width="44" height="44" style="clip-path: inset(0 0 0 55%);" alt="">
+              </div>
+              <span class="bh-tile__label">Non separare i blocchi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Colori -->
+  <section class="section" id="colori" aria-labelledby="colori-title">
+    <div class="section__inner">
+      <div class="section__header">
+        <span class="section__number" aria-hidden="true">02</span>
+        <p class="section__eyebrow">Palette</p>
+        <h2 class="section__title" id="colori-title">Colori</h2>
+      </div>
+      <div class="bh-swatches">
+        <div class="bh-swatch"><div class="bh-swatch__chip" style="background: #26251e;"></div><div class="bh-swatch__meta"><span class="bh-swatch__name">Ink</span><span class="bh-swatch__var">--ink · --color-text</span><span class="bh-swatch__var">#26251e</span><span class="bh-swatch__role">Testo, superfici forti, blocco scuro del marchio</span></div></div>
+        <div class="bh-swatch"><div class="bh-swatch__chip" style="background: #f54e00;"></div><div class="bh-swatch__meta"><span class="bh-swatch__name">Arancione</span><span class="bh-swatch__var">--cursor-orange · --color-accent</span><span class="bh-swatch__var">#f54e00</span><span class="bh-swatch__role">Accento, azioni primarie, blocco caldo del marchio</span></div></div>
+        <div class="bh-swatch"><div class="bh-swatch__chip" style="background: #c73a00;"></div><div class="bh-swatch__meta"><span class="bh-swatch__name">Arancione deep</span><span class="bh-swatch__var">--color-accent-deep</span><span class="bh-swatch__var">#c73a00</span><span class="bh-swatch__role">Angoli del marchio, stati attivi</span></div></div>
+        <div class="bh-swatch"><div class="bh-swatch__chip" style="background: #f7f7f4;"></div><div class="bh-swatch__meta"><span class="bh-swatch__name">Bg</span><span class="bh-swatch__var">--color-bg</span><span class="bh-swatch__var">#f7f7f4</span><span class="bh-swatch__role">Fondo pagina</span></div></div>
+        <div class="bh-swatch"><div class="bh-swatch__chip" style="background: #efeee8;"></div><div class="bh-swatch__meta"><span class="bh-swatch__name">Bg muted</span><span class="bh-swatch__var">--color-bg-muted</span><span class="bh-swatch__var">#efeee8</span><span class="bh-swatch__role">Sezioni alternate, chip</span></div></div>
+        <div class="bh-swatch"><div class="bh-swatch__chip" style="background: #ffffff; border-bottom: var(--border-muted);"></div><div class="bh-swatch__meta"><span class="bh-swatch__name">Surface</span><span class="bh-swatch__var">--color-surface</span><span class="bh-swatch__var">#ffffff</span><span class="bh-swatch__role">Card, campo della "e"</span></div></div>
+        <div class="bh-swatch"><div class="bh-swatch__chip" style="background: #5a5852;"></div><div class="bh-swatch__meta"><span class="bh-swatch__name">Text muted</span><span class="bh-swatch__var">--color-text-muted</span><span class="bh-swatch__var">#5a5852</span><span class="bh-swatch__role">Testo secondario</span></div></div>
+        <div class="bh-swatch"><div class="bh-swatch__chip" style="background: #807d72;"></div><div class="bh-swatch__meta"><span class="bh-swatch__name">Text soft</span><span class="bh-swatch__var">--color-text-soft</span><span class="bh-swatch__var">#807d72</span><span class="bh-swatch__role">Label tecniche, readout</span></div></div>
+        <div class="bh-swatch"><div class="bh-swatch__chip" style="background: #e6e5e0;"></div><div class="bh-swatch__meta"><span class="bh-swatch__name">Border</span><span class="bh-swatch__var">--color-border</span><span class="bh-swatch__var">#e6e5e0</span><span class="bh-swatch__role">Bordi e divisori</span></div></div>
+        <div class="bh-swatch"><div class="bh-swatch__chip" style="background: #fff1e6;"></div><div class="bh-swatch__meta"><span class="bh-swatch__name">Accent soft</span><span class="bh-swatch__var">--color-accent-soft</span><span class="bh-swatch__var">#fff1e6</span><span class="bh-swatch__role">Halo, selezione, hover leggeri</span></div></div>
+        <div class="bh-swatch"><div class="bh-swatch__chip" style="background: #1f8a65;"></div><div class="bh-swatch__meta"><span class="bh-swatch__name">Success</span><span class="bh-swatch__var">--color-success</span><span class="bh-swatch__var">#1f8a65</span><span class="bh-swatch__role">Stato positivo</span></div></div>
+        <div class="bh-swatch"><div class="bh-swatch__chip" style="background: #b42318;"></div><div class="bh-swatch__meta"><span class="bh-swatch__name">Danger</span><span class="bh-swatch__var">--color-danger</span><span class="bh-swatch__var">#b42318</span><span class="bh-swatch__role">Errori, don'ts</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 Tipografia -->
+  <section class="section section--alt" id="tipografia" aria-labelledby="tipo-title">
+    <div class="section__inner">
+      <div class="section__header">
+        <span class="section__number" aria-hidden="true">03</span>
+        <p class="section__eyebrow">Voci</p>
+        <h2 class="section__title" id="tipo-title">Tipografia</h2>
+      </div>
+
+      <table class="bh-spec" style="margin-bottom: var(--space-7);">
+        <thead><tr><th>Token</th><th>Famiglia</th><th>Ruolo</th></tr></thead>
+        <tbody>
+          <tr><td>--font-display</td><td>Inter</td><td>Headline, titoli, wordmark — la voce del brand</td></tr>
+          <tr><td>--font-sans</td><td>Lato</td><td>Testo corrente</td></tr>
+          <tr><td>--font-mono-ui</td><td>Roboto Mono</td><td>Eyebrow, label tecniche, readout, badge</td></tr>
+          <tr><td>--font-code</td><td>Fira Code</td><td>Codice</td></tr>
+        </tbody>
+      </table>
+
+      <div>
+        <div class="bh-type-row">
+          <span class="bh-type-meta">--text-3xl</span>
+          <span style="font-family: var(--font-display); font-size: var(--text-3xl); letter-spacing: -0.03em; line-height: var(--leading-3xl);">Orchestro agenti AI</span>
+        </div>
+        <div class="bh-type-row">
+          <span class="bh-type-meta">--text-2xl</span>
+          <span style="font-family: var(--font-display); font-size: var(--text-2xl); letter-spacing: -0.02em; line-height: var(--leading-2xl);">Non scrivo codice</span>
+        </div>
+        <div class="bh-type-row">
+          <span class="bh-type-meta">--text-xl</span>
+          <span style="font-family: var(--font-display); font-size: var(--text-xl); letter-spacing: -0.01em; line-height: var(--leading-xl);">Descrivi cosa vuoi — l'AI costruisce il resto</span>
+        </div>
+        <div class="bh-type-row">
+          <span class="bh-type-meta">--text-lg / Lato</span>
+          <span style="font-size: var(--text-lg); line-height: var(--leading-lg);">Agenti autonomi, automazione intelligente, prodotti digitali.</span>
+        </div>
+        <div class="bh-type-row">
+          <span class="bh-type-meta">--text-md / Lato</span>
+          <span style="font-size: var(--text-md);">Il ragionamento strategico resta umano, l'esecuzione è AI.</span>
+        </div>
+        <div class="bh-type-row">
+          <span class="bh-type-meta">--text-sm / mono</span>
+          <span style="font-family: var(--font-mono-ui); font-size: var(--text-sm); letter-spacing: var(--tracking-wide); text-transform: uppercase;">Vibecoder — Orchestrator — Enthusiast</span>
+        </div>
+        <div class="bh-type-row">
+          <span class="bh-type-meta">--text-xs / mono</span>
+          <span style="font-family: var(--font-mono-ui); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-soft);">Agents [3] — Online</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Spaziatura & forme -->
+  <section class="section" id="spazio" aria-labelledby="spazio-title">
+    <div class="section__inner">
+      <div class="section__header">
+        <span class="section__number" aria-hidden="true">04</span>
+        <p class="section__eyebrow">Ritmo</p>
+        <h2 class="section__title" id="spazio-title">Spaziatura &amp; forme</h2>
+      </div>
+
+      <div style="margin-bottom: var(--space-7);">
+        <div class="bh-space-row"><span class="bh-type-meta">--space-2 · 8px</span><div class="bh-space-bar" style="width: 8px;"></div></div>
+        <div class="bh-space-row"><span class="bh-type-meta">--space-4 · 16px</span><div class="bh-space-bar" style="width: 16px;"></div></div>
+        <div class="bh-space-row"><span class="bh-type-meta">--space-5</span><div class="bh-space-bar" style="width: var(--space-5);"></div></div>
+        <div class="bh-space-row"><span class="bh-type-meta">--space-6</span><div class="bh-space-bar" style="width: var(--space-6);"></div></div>
+        <div class="bh-space-row"><span class="bh-type-meta">--space-7</span><div class="bh-space-bar" style="width: var(--space-7);"></div></div>
+        <div class="bh-space-row"><span class="bh-type-meta">--space-8</span><div class="bh-space-bar" style="width: var(--space-8);"></div></div>
+        <div class="bh-space-row"><span class="bh-type-meta">--space-9</span><div class="bh-space-bar" style="width: var(--space-9);"></div></div>
+        <div class="bh-space-row"><span class="bh-type-meta">--space-10</span><div class="bh-space-bar" style="width: var(--space-10);"></div></div>
+        <div class="bh-space-row"><span class="bh-type-meta">--space-11</span><div class="bh-space-bar" style="width: var(--space-11);"></div></div>
+      </div>
+
+      <div class="bh-shape-row">
+        <div class="bh-radius-tile" style="border-radius: var(--radius-xs);">xs 4</div>
+        <div class="bh-radius-tile" style="border-radius: var(--radius-sm);">sm 8</div>
+        <div class="bh-radius-tile" style="border-radius: var(--radius-md);">md 12</div>
+        <div class="bh-radius-tile" style="border-radius: var(--radius-lg);">lg 16</div>
+        <div class="bh-radius-tile" style="border-radius: var(--radius-xl);">xl 20</div>
+        <div class="bh-radius-tile" style="border-radius: var(--radius-pill); width: 120px; height: 48px;">pill</div>
+        <div class="bh-radius-tile" style="box-shadow: var(--shadow-lg); background: var(--color-surface); border-color: var(--color-border);">shadow-lg</div>
+      </div>
+      <p class="bh-tile__label" style="margin-top: var(--space-4); text-align: left;">
+        Nota: il marchio e le icone restano ad angoli vivi — i raggi valgono solo per i componenti UI.
+      </p>
+    </div>
+  </section>
+
+  <!-- 05 Componenti -->
+  <section class="section section--alt" id="componenti" aria-labelledby="comp-title">
+    <div class="section__inner">
+      <div class="section__header">
+        <span class="section__number" aria-hidden="true">05</span>
+        <p class="section__eyebrow">Sistema</p>
+        <h2 class="section__title" id="comp-title">Componenti</h2>
+      </div>
+
+      <div class="ds-stack" style="gap: var(--space-7);">
+        <div>
+          <h3 class="ds-heading-4">Bottoni</h3>
+          <div class="ds-cluster">
+            <a href="#" class="ds-button ds-button--primary" onclick="return false;">Primario</a>
+            <a href="#" class="ds-button ds-button--dark" onclick="return false;">Dark</a>
+            <a href="#" class="ds-button ds-button--secondary" onclick="return false;">Secondario</a>
+            <a href="#" class="ds-button ds-button--ghost" onclick="return false;">Ghost <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="ds-heading-4">Badge &amp; pill</h3>
+          <div class="ds-cluster">
+            <span class="ds-badge ds-badge--neutral">Neutral</span>
+            <span class="ds-badge ds-badge--accent">Accent</span>
+            <span class="ds-badge ds-badge--technical">AI Agents</span>
+            <span class="ds-badge ds-badge--technical">Bitcoin</span>
+            <span class="ds-badge ds-badge--technical"><span class="ds-status-dot ds-status-dot--success" style="margin-right: 4px;"></span>Online</span>
+          </div>
+        </div>
+
+        <div class="ds-cluster" style="align-items: stretch; gap: var(--space-5);">
+          <div style="flex: 1 1 320px; min-width: 280px;">
+            <h3 class="ds-heading-4">Project card</h3>
+            <article class="ds-project-card">
+              <div class="ds-project-card__meta">2026 · Esempio</div>
+              <div class="ds-project-card__body">
+                <h4 class="ds-project-card__title">Nome progetto</h4>
+                <p class="ds-project-card__desc">Descrizione sintetica in Lato, un paio di righe al massimo.</p>
+              </div>
+              <div class="ds-project-card__footer">
+                <div class="ds-cluster">
+                  <span class="ds-badge ds-badge--technical">Tag</span>
+                  <span class="ds-badge ds-badge--technical">Tag</span>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div style="flex: 0 1 280px; min-width: 240px;">
+            <h3 class="ds-heading-4">Spec card</h3>
+            <div class="spec-card">
+              <p class="spec-card__row"><span>Location</span>IT</p>
+              <p class="spec-card__row"><span>Focus</span>AI Agents</p>
+              <p class="spec-card__row"><span>Status</span><b class="spec-card__status"><span class="spec-card__dot"></span>Online</b></p>
+            </div>
+          </div>
+          <div style="flex: 1 1 300px; min-width: 260px;">
+            <h3 class="ds-heading-4">Timeline</h3>
+            <ul class="ds-timeline">
+              <li class="ds-timeline__item ds-timeline__item--current">
+                <div class="ds-timeline__dot"></div>
+                <p class="ds-timeline__date">2026 — presente</p>
+                <h4 class="ds-timeline__title">Voce corrente</h4>
+              </li>
+              <li class="ds-timeline__item">
+                <div class="ds-timeline__dot"></div>
+                <p class="ds-timeline__date">2017 — 2026</p>
+                <h4 class="ds-timeline__title">Voce passata</h4>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="ds-heading-4">Contact strip</h3>
+          <section class="ds-contact-strip bh-strip-demo" aria-label="Demo contact strip">
+            <div class="ds-contact-strip__inner">
+              <h4 class="ds-contact-strip__heading" style="font-size: var(--text-2xl);">Lavoriamo insieme.</h4>
+              <div class="ds-contact-strip__links">
+                <a href="#" class="ds-contact-strip__link" onclick="return false;"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><rect x="4" y="3" width="4" height="4"/><rect x="16" y="3" width="4" height="4"/><rect x="10" y="16" width="4" height="4"/><path d="M6 7v3h12V7"/><path d="M12 10v6"/></svg> GitHub</a>
+                <span style="opacity: 0.4; font-size: 10px;">◆</span>
+                <a href="#" class="ds-contact-strip__link" onclick="return false;"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="M3 7l9 6 9-6"/></svg> Email</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 Icone -->
+  <section class="section" id="icone" aria-labelledby="icone-title">
+    <div class="section__inner">
+      <div class="section__header">
+        <span class="section__number" aria-hidden="true">06</span>
+        <p class="section__eyebrow">Glifi</p>
+        <h2 class="section__title" id="icone-title">Icone</h2>
+      </div>
+      <p class="bh-lead" style="font-size: var(--text-md); margin-bottom: var(--space-6);">
+        24×24, stroke 2px, cap piatti e giunti a spigolo. Geometria ortogonale dove possibile:
+        le icone ereditano il linguaggio a blocchi del monogramma.
+      </p>
+      <div class="bh-icons">
+        <div class="bh-icon-cell"><img src="assets/icons/mark.svg" alt=""><span class="bh-tile__label">mark</span></div>
+        <div class="bh-icon-cell"><img src="assets/icons/user.svg" alt=""><span class="bh-tile__label">user</span></div>
+        <div class="bh-icon-cell"><img src="assets/icons/grid.svg" alt=""><span class="bh-tile__label">grid</span></div>
+        <div class="bh-icon-cell"><img src="assets/icons/layers.svg" alt=""><span class="bh-tile__label">layers</span></div>
+        <div class="bh-icon-cell"><img src="assets/icons/clock.svg" alt=""><span class="bh-tile__label">clock</span></div>
+        <div class="bh-icon-cell"><img src="assets/icons/mail.svg" alt=""><span class="bh-tile__label">mail</span></div>
+        <div class="bh-icon-cell"><img src="assets/icons/github.svg" alt=""><span class="bh-tile__label">github</span></div>
+        <div class="bh-icon-cell"><img src="assets/icons/send.svg" alt=""><span class="bh-tile__label">send</span></div>
+        <div class="bh-icon-cell"><img src="assets/icons/x.svg" alt=""><span class="bh-tile__label">x</span></div>
+        <div class="bh-icon-cell"><img src="assets/icons/linkedin.svg" alt=""><span class="bh-tile__label">linkedin</span></div>
+        <div class="bh-icon-cell"><img src="assets/icons/audio.svg" alt=""><span class="bh-tile__label">audio</span></div>
+        <div class="bh-icon-cell"><img src="assets/icons/audio-off.svg" alt=""><span class="bh-tile__label">audio-off</span></div>
+        <div class="bh-icon-cell"><img src="assets/icons/pin.svg" alt=""><span class="bh-tile__label">pin</span></div>
+        <div class="bh-icon-cell"><img src="assets/icons/arrow-right.svg" alt=""><span class="bh-tile__label">arrow-right</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 Motion -->
+  <section class="section section--alt" id="motion" aria-labelledby="motion-title">
+    <div class="section__inner">
+      <div class="section__header">
+        <span class="section__number" aria-hidden="true">07</span>
+        <p class="section__eyebrow">Movimento</p>
+        <h2 class="section__title" id="motion-title">Motion</h2>
+      </div>
+      <table class="bh-spec" style="max-width: 640px; margin-bottom: var(--space-6);">
+        <thead><tr><th>Token</th><th>Valore</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td>--duration-fast</td><td>120ms</td><td>Hover, colori, micro-feedback</td></tr>
+          <tr><td>--duration-base</td><td>180ms</td><td>Bordi, superfici, bottoni</td></tr>
+          <tr><td>--duration-slow</td><td>260ms</td><td>Entrate, transizioni di scena</td></tr>
+          <tr><td>--ease-standard</td><td>cubic-bezier(0.2, 0, 0, 1)</td><td>Easing unico di sistema</td></tr>
+        </tbody>
+      </table>
+      <p class="bh-lead" style="font-size: var(--text-md);">
+        Con <code>prefers-reduced-motion: reduce</code> ogni animazione si disattiva:
+        la board della hero diventa statica e il typing appare già completo.
+        Il tema è chiaro fisso — bianco, ink, arancione — per scelta, non per mancanza di dark mode.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <a href="index.html" class="brand-wordmark" aria-label="edi.md — home">
+        <svg viewBox="0 0 800 200" fill="none" aria-hidden="true">
+          <text x="385" y="126" font-family="'Inter', system-ui, 'Helvetica Neue', sans-serif" font-size="72" font-weight="400" letter-spacing="-2.16" fill="#26251e" text-anchor="end">edi</text>
+          <text x="385" y="126" font-family="'Inter', system-ui, 'Helvetica Neue', sans-serif" font-size="72" font-weight="400" letter-spacing="-2.16" fill="#f54e00" text-anchor="start">.md</text>
+        </svg>
+      </a>
+      <p class="site-footer__copy">© 2026 Edi — Brand &amp; Design System.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
