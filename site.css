@@ -381,6 +381,39 @@
       animation: pulse-dot 2s ease-in-out infinite;
     }
 
+    .ds-button--explore {
+      position: relative;
+      background: linear-gradient(90deg, var(--color-accent), #ff7a33, var(--color-accent));
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-pulse 2s ease-in-out infinite;
+      border-color: transparent;
+      font-weight: 700;
+    }
+    .ds-button--explore::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--color-accent), #ff7a33, var(--color-accent));
+      background-size: 200% 100%;
+      animation: gradient-pulse 2s ease-in-out infinite;
+      z-index: -1;
+      opacity: 0.25;
+      filter: blur(4px);
+    }
+    .ds-button--explore .icon {
+      -webkit-text-fill-color: var(--color-accent);
+      stroke: var(--color-accent);
+    }
+
+    @keyframes gradient-pulse {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
     @keyframes pulse-dot {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.35; }
