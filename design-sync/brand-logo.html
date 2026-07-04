@@ -1,0 +1,205 @@
+<!-- @dsCard group="Brand" name="Logo — monogramma e lockup" -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>edi.md — Logo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Lato:wght@400;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Base condivisa card design-sync — token copiati da design-system.css :root */
+:root {
+  --white: #ffffff;
+  --cursor-orange: #f54e00;
+  --ink: #26251e;
+  --color-bg: #f7f7f4;
+  --color-bg-muted: #efeee8;
+  --color-bg-subtle: #fafaf7;
+  --color-surface: var(--white);
+  --color-surface-strong: var(--ink);
+  --color-text: var(--ink);
+  --color-text-muted: #5a5852;
+  --color-text-soft: #807d72;
+  --color-text-inverse: var(--white);
+  --color-border: #e6e5e0;
+  --color-border-muted: #efeee8;
+  --color-border-strong: var(--ink);
+  --color-accent: var(--cursor-orange);
+  --color-accent-hover: #d04200;
+  --color-accent-active: #b83a00;
+  --color-accent-deep: #c73a00;
+  --color-accent-soft: #fff1e6;
+  --color-accent-border: #f5b892;
+  --color-focus: var(--cursor-orange);
+  --color-danger: #b42318;
+  --color-success: #1f8a65;
+  --color-warning: #946200;
+
+  --font-sans: "Lato", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Inter", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  --font-code: "Fira Code", "Roboto Mono", monospace;
+  --font-mono-ui: "Roboto Mono", monospace;
+
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.06em;
+
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: clamp(16px, 0.5vw + 15px, 18px);
+  --text-xl: clamp(20px, 1vw + 16px, 24px);
+  --text-2xl: clamp(25px, 1.8vw + 18px, 32px);
+  --text-3xl: clamp(33px, 2.8vw + 22px, 44px);
+
+  --leading-xs: 1.35;
+  --leading-sm: 1.45;
+  --leading-md: 1.5;
+  --leading-lg: 1.55;
+  --leading-xl: 1.35;
+  --leading-2xl: 1.25;
+  --leading-3xl: 1.18;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: clamp(20px, 1vw + 16px, 24px);
+  --space-6: clamp(24px, 2vw + 16px, 32px);
+  --space-7: clamp(34px, 3.5vw + 20px, 48px);
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  --border-thin: 1px solid var(--color-border);
+  --border-muted: 1px solid var(--color-border-muted);
+  --border-strong: 1px solid var(--color-border-strong);
+
+  --shadow-sm: 0 1px 2px rgb(38 37 30 / 0.04);
+  --shadow-md: 0 4px 12px rgb(38 37 30 / 0.06);
+  --shadow-focus: 0 0 0 3px rgb(245 78 0 / 0.25);
+
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --duration-slow: 260ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--leading-md);
+  padding: var(--space-6);
+  -webkit-font-smoothing: antialiased;
+}
+
+.card-label {
+  font-family: var(--font-mono-ui);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); }
+.tile {
+  display: grid; gap: var(--space-3); justify-items: center; align-content: center;
+  border: var(--border-muted); border-radius: var(--radius-md);
+  background: var(--color-surface); padding: var(--space-5); min-height: 180px;
+}
+.tile--ink { background: var(--ink); border-color: var(--ink); }
+.tile--ink .card-label { color: #b8b5a8; }
+.tile svg.mark { width: 96px; height: 96px; }
+.lockups { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4); margin-top: var(--space-4); }
+.lockups .tile svg { height: 56px; width: auto; }
+h2 { font-family: var(--font-display); font-weight: 500; font-size: var(--text-lg); letter-spacing: var(--tracking-tight); margin-bottom: var(--space-4); }
+section + section { margin-top: var(--space-6); }
+</style>
+</head>
+<body>
+<section>
+  <h2>Monogramma — "e" a blocchi, griglia 120 / modulo 20, solo rettangoli</h2>
+  <div class="tiles">
+    <div class="tile">
+      <svg class="mark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <rect x="80" y="0" width="40" height="40" fill="#c73a00"/>
+        <rect x="0" y="80" width="40" height="40" fill="#c73a00"/>
+        <rect x="0" y="0" width="90" height="90" fill="#f54e00"/>
+        <rect x="30" y="30" width="90" height="90" fill="#26251e"/>
+        <rect x="20" y="20" width="80" height="80" fill="#ffffff"/>
+        <rect x="40" y="40" width="40" height="10" fill="#f54e00"/>
+        <rect x="40" y="70" width="60" height="10" fill="#26251e"/>
+      </svg>
+      <span class="card-label">mark.svg — canonico</span>
+    </div>
+    <div class="tile">
+      <svg class="mark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <rect x="80" y="0" width="40" height="40" fill="#807d72"/>
+        <rect x="0" y="80" width="40" height="40" fill="#807d72"/>
+        <rect x="0" y="0" width="90" height="90" fill="#26251e"/>
+        <rect x="30" y="30" width="90" height="90" fill="#5a5852"/>
+        <rect x="20" y="20" width="80" height="80" fill="#ffffff"/>
+        <rect x="40" y="40" width="40" height="10" fill="#26251e"/>
+        <rect x="40" y="70" width="60" height="10" fill="#5a5852"/>
+      </svg>
+      <span class="card-label">mark-mono.svg — un colore</span>
+    </div>
+    <div class="tile tile--ink">
+      <svg class="mark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <rect x="80" y="0" width="40" height="40" fill="#c73a00"/>
+        <rect x="0" y="80" width="40" height="40" fill="#c73a00"/>
+        <rect x="0" y="0" width="90" height="90" fill="#f54e00"/>
+        <rect x="30" y="30" width="90" height="90" fill="#fafaf7"/>
+        <rect x="20" y="20" width="80" height="80" fill="#26251e"/>
+        <rect x="40" y="40" width="40" height="10" fill="#f54e00"/>
+        <rect x="40" y="70" width="60" height="10" fill="#fafaf7"/>
+      </svg>
+      <span class="card-label">mark-inverse.svg — fondi ink</span>
+    </div>
+    <div class="tile" style="background: var(--color-bg-muted);">
+      <svg width="32" height="32" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" style="image-rendering: pixelated;">
+        <rect x="0" y="0" width="120" height="120" fill="#f54e00"/>
+        <rect x="15" y="15" width="105" height="105" fill="#26251e"/>
+        <rect x="10" y="10" width="100" height="100" fill="#ffffff"/>
+        <rect x="30" y="30" width="60" height="20" fill="#f54e00"/>
+        <rect x="30" y="70" width="90" height="20" fill="#26251e"/>
+      </svg>
+      <span class="card-label">mark-16.svg — solo favicon ≤16px</span>
+    </div>
+  </div>
+</section>
+<section>
+  <h2>Lockup — monogramma + wordmark, gap un modulo</h2>
+  <div class="lockups">
+    <div class="tile">
+      <svg viewBox="140 20 220 70" xmlns="http://www.w3.org/2000/svg" aria-label="edi.md">
+        <text x="143" y="80" font-family="'Inter', system-ui, sans-serif" font-size="72" font-weight="400" letter-spacing="-2.16" fill="#26251e">edi</text>
+        <text x="243" y="80" font-family="'Inter', system-ui, sans-serif" font-size="72" font-weight="400" letter-spacing="-2.16" fill="#f54e00">.md</text>
+      </svg>
+      <span class="card-label">wordmark — Inter, ink + arancione</span>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 360.6 120" xmlns="http://www.w3.org/2000/svg" aria-label="edi.md">
+        <rect x="80" y="0" width="40" height="40" fill="#c73a00"/>
+        <rect x="0" y="80" width="40" height="40" fill="#c73a00"/>
+        <rect x="0" y="0" width="90" height="90" fill="#f54e00"/>
+        <rect x="30" y="30" width="90" height="90" fill="#26251e"/>
+        <rect x="20" y="20" width="80" height="80" fill="#ffffff"/>
+        <rect x="40" y="40" width="40" height="10" fill="#f54e00"/>
+        <rect x="40" y="70" width="60" height="10" fill="#26251e"/>
+        <text x="140" y="80" font-family="'Inter', system-ui, sans-serif" font-size="72" font-weight="400" letter-spacing="-2.16" fill="#26251e">edi</text>
+        <text x="240" y="80" font-family="'Inter', system-ui, sans-serif" font-size="72" font-weight="400" letter-spacing="-2.16" fill="#f54e00">.md</text>
+      </svg>
+      <span class="card-label">lockup.svg — mark + wordmark</span>
+    </div>
+  </div>
+</section>
+</body>
+</html>

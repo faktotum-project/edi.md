@@ -1,0 +1,149 @@
+<!-- @dsCard group="Type" name="Scala tipografica" -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>edi.md — Scala tipografica</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Lato:wght@400;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Base condivisa card design-sync — token copiati da design-system.css :root */
+:root {
+  --white: #ffffff;
+  --cursor-orange: #f54e00;
+  --ink: #26251e;
+  --color-bg: #f7f7f4;
+  --color-bg-muted: #efeee8;
+  --color-bg-subtle: #fafaf7;
+  --color-surface: var(--white);
+  --color-surface-strong: var(--ink);
+  --color-text: var(--ink);
+  --color-text-muted: #5a5852;
+  --color-text-soft: #807d72;
+  --color-text-inverse: var(--white);
+  --color-border: #e6e5e0;
+  --color-border-muted: #efeee8;
+  --color-border-strong: var(--ink);
+  --color-accent: var(--cursor-orange);
+  --color-accent-hover: #d04200;
+  --color-accent-active: #b83a00;
+  --color-accent-deep: #c73a00;
+  --color-accent-soft: #fff1e6;
+  --color-accent-border: #f5b892;
+  --color-focus: var(--cursor-orange);
+  --color-danger: #b42318;
+  --color-success: #1f8a65;
+  --color-warning: #946200;
+
+  --font-sans: "Lato", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Inter", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  --font-code: "Fira Code", "Roboto Mono", monospace;
+  --font-mono-ui: "Roboto Mono", monospace;
+
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.06em;
+
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: clamp(16px, 0.5vw + 15px, 18px);
+  --text-xl: clamp(20px, 1vw + 16px, 24px);
+  --text-2xl: clamp(25px, 1.8vw + 18px, 32px);
+  --text-3xl: clamp(33px, 2.8vw + 22px, 44px);
+
+  --leading-xs: 1.35;
+  --leading-sm: 1.45;
+  --leading-md: 1.5;
+  --leading-lg: 1.55;
+  --leading-xl: 1.35;
+  --leading-2xl: 1.25;
+  --leading-3xl: 1.18;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: clamp(20px, 1vw + 16px, 24px);
+  --space-6: clamp(24px, 2vw + 16px, 32px);
+  --space-7: clamp(34px, 3.5vw + 20px, 48px);
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  --border-thin: 1px solid var(--color-border);
+  --border-muted: 1px solid var(--color-border-muted);
+  --border-strong: 1px solid var(--color-border-strong);
+
+  --shadow-sm: 0 1px 2px rgb(38 37 30 / 0.04);
+  --shadow-md: 0 4px 12px rgb(38 37 30 / 0.06);
+  --shadow-focus: 0 0 0 3px rgb(245 78 0 / 0.25);
+
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --duration-slow: 260ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--leading-md);
+  padding: var(--space-6);
+  -webkit-font-smoothing: antialiased;
+}
+
+.card-label {
+  font-family: var(--font-mono-ui);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+
+.type-row {
+  display: grid; grid-template-columns: 120px 1fr; align-items: baseline; gap: var(--space-4);
+  padding: var(--space-4) 0; border-bottom: var(--border-muted);
+}
+.type-row:last-child { border-bottom: 0; }
+.type-meta { font-family: var(--font-mono-ui); font-size: var(--text-xs); color: var(--color-text-soft); }
+</style>
+</head>
+<body>
+<div class="type-row">
+  <span class="type-meta">--text-3xl</span>
+  <span style="font-family: var(--font-display); font-size: var(--text-3xl); letter-spacing: -0.03em; line-height: var(--leading-3xl);">Orchestro agenti AI</span>
+</div>
+<div class="type-row">
+  <span class="type-meta">--text-2xl</span>
+  <span style="font-family: var(--font-display); font-size: var(--text-2xl); letter-spacing: -0.02em; line-height: var(--leading-2xl);">Non scrivo codice</span>
+</div>
+<div class="type-row">
+  <span class="type-meta">--text-xl</span>
+  <span style="font-family: var(--font-display); font-size: var(--text-xl); letter-spacing: -0.01em; line-height: var(--leading-xl);">Descrivi cosa vuoi — l'AI costruisce il resto</span>
+</div>
+<div class="type-row">
+  <span class="type-meta">--text-lg / Lato</span>
+  <span style="font-size: var(--text-lg); line-height: var(--leading-lg);">Agenti autonomi, automazione intelligente, prodotti digitali.</span>
+</div>
+<div class="type-row">
+  <span class="type-meta">--text-md / Lato</span>
+  <span style="font-size: var(--text-md);">Il ragionamento strategico resta umano, l'esecuzione è AI.</span>
+</div>
+<div class="type-row">
+  <span class="type-meta">--text-sm / mono</span>
+  <span style="font-family: var(--font-mono-ui); font-size: var(--text-sm); letter-spacing: var(--tracking-wide); text-transform: uppercase;">Vibecoder — Orchestrator — Enthusiast</span>
+</div>
+<div class="type-row">
+  <span class="type-meta">--text-xs / mono</span>
+  <span style="font-family: var(--font-mono-ui); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-soft);">Agents [3] — Online</span>
+</div>
+</body>
+</html>

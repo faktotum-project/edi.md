@@ -1,0 +1,153 @@
+<!-- @dsCard group="Colors" name="Palette — token colore" -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>edi.md — Colori</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Lato:wght@400;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Base condivisa card design-sync — token copiati da design-system.css :root */
+:root {
+  --white: #ffffff;
+  --cursor-orange: #f54e00;
+  --ink: #26251e;
+  --color-bg: #f7f7f4;
+  --color-bg-muted: #efeee8;
+  --color-bg-subtle: #fafaf7;
+  --color-surface: var(--white);
+  --color-surface-strong: var(--ink);
+  --color-text: var(--ink);
+  --color-text-muted: #5a5852;
+  --color-text-soft: #807d72;
+  --color-text-inverse: var(--white);
+  --color-border: #e6e5e0;
+  --color-border-muted: #efeee8;
+  --color-border-strong: var(--ink);
+  --color-accent: var(--cursor-orange);
+  --color-accent-hover: #d04200;
+  --color-accent-active: #b83a00;
+  --color-accent-deep: #c73a00;
+  --color-accent-soft: #fff1e6;
+  --color-accent-border: #f5b892;
+  --color-focus: var(--cursor-orange);
+  --color-danger: #b42318;
+  --color-success: #1f8a65;
+  --color-warning: #946200;
+
+  --font-sans: "Lato", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Inter", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  --font-code: "Fira Code", "Roboto Mono", monospace;
+  --font-mono-ui: "Roboto Mono", monospace;
+
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.06em;
+
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: clamp(16px, 0.5vw + 15px, 18px);
+  --text-xl: clamp(20px, 1vw + 16px, 24px);
+  --text-2xl: clamp(25px, 1.8vw + 18px, 32px);
+  --text-3xl: clamp(33px, 2.8vw + 22px, 44px);
+
+  --leading-xs: 1.35;
+  --leading-sm: 1.45;
+  --leading-md: 1.5;
+  --leading-lg: 1.55;
+  --leading-xl: 1.35;
+  --leading-2xl: 1.25;
+  --leading-3xl: 1.18;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: clamp(20px, 1vw + 16px, 24px);
+  --space-6: clamp(24px, 2vw + 16px, 32px);
+  --space-7: clamp(34px, 3.5vw + 20px, 48px);
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  --border-thin: 1px solid var(--color-border);
+  --border-muted: 1px solid var(--color-border-muted);
+  --border-strong: 1px solid var(--color-border-strong);
+
+  --shadow-sm: 0 1px 2px rgb(38 37 30 / 0.04);
+  --shadow-md: 0 4px 12px rgb(38 37 30 / 0.06);
+  --shadow-focus: 0 0 0 3px rgb(245 78 0 / 0.25);
+
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --duration-slow: 260ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--leading-md);
+  padding: var(--space-6);
+  -webkit-font-smoothing: antialiased;
+}
+
+.card-label {
+  font-family: var(--font-mono-ui);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+
+h2 { font-family: var(--font-display); font-weight: 500; font-size: var(--text-lg); letter-spacing: var(--tracking-tight); margin-bottom: var(--space-4); }
+section + section { margin-top: var(--space-6); }
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-4); }
+.swatch { border: var(--border-muted); border-radius: var(--radius-md); background: var(--color-surface); overflow: hidden; }
+.swatch__chip { height: 72px; }
+.swatch__meta { display: grid; gap: 2px; padding: var(--space-3); }
+.swatch__name { font-weight: 700; font-size: var(--text-sm); }
+.swatch__var { font-family: var(--font-mono-ui); font-size: var(--text-xs); color: var(--color-text-muted); }
+.swatch__hex { font-family: var(--font-mono-ui); font-size: var(--text-xs); color: var(--color-text-soft); }
+</style>
+</head>
+<body>
+<section>
+  <h2>Fondamentali — tema chiaro fisso</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch__chip" style="background: #26251e;"></div><div class="swatch__meta"><span class="swatch__name">Ink</span><span class="swatch__var">--ink / --color-text</span><span class="swatch__hex">#26251e</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background: #f7f7f4; border-bottom: var(--border-muted);"></div><div class="swatch__meta"><span class="swatch__name">Background</span><span class="swatch__var">--color-bg</span><span class="swatch__hex">#f7f7f4</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background: #efeee8;"></div><div class="swatch__meta"><span class="swatch__name">Background muted</span><span class="swatch__var">--color-bg-muted</span><span class="swatch__hex">#efeee8</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background: #ffffff; border-bottom: var(--border-muted);"></div><div class="swatch__meta"><span class="swatch__name">Surface</span><span class="swatch__var">--color-surface</span><span class="swatch__hex">#ffffff</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background: #5a5852;"></div><div class="swatch__meta"><span class="swatch__name">Text muted</span><span class="swatch__var">--color-text-muted</span><span class="swatch__hex">#5a5852</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background: #e6e5e0;"></div><div class="swatch__meta"><span class="swatch__name">Border</span><span class="swatch__var">--color-border</span><span class="swatch__hex">#e6e5e0</span></div></div>
+  </div>
+</section>
+<section>
+  <h2>Accento</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch__chip" style="background: #f54e00;"></div><div class="swatch__meta"><span class="swatch__name">Accent</span><span class="swatch__var">--color-accent</span><span class="swatch__hex">#f54e00</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background: #d04200;"></div><div class="swatch__meta"><span class="swatch__name">Accent hover</span><span class="swatch__var">--color-accent-hover</span><span class="swatch__hex">#d04200</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background: #c73a00;"></div><div class="swatch__meta"><span class="swatch__name">Accent deep</span><span class="swatch__var">--color-accent-deep</span><span class="swatch__hex">#c73a00</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background: #fff1e6;"></div><div class="swatch__meta"><span class="swatch__name">Accent soft</span><span class="swatch__var">--color-accent-soft</span><span class="swatch__hex">#fff1e6</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background: #f5b892;"></div><div class="swatch__meta"><span class="swatch__name">Accent border</span><span class="swatch__var">--color-accent-border</span><span class="swatch__hex">#f5b892</span></div></div>
+  </div>
+</section>
+<section>
+  <h2>Semantici</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch__chip" style="background: #b42318;"></div><div class="swatch__meta"><span class="swatch__name">Danger</span><span class="swatch__var">--color-danger</span><span class="swatch__hex">#b42318</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background: #1f8a65;"></div><div class="swatch__meta"><span class="swatch__name">Success</span><span class="swatch__var">--color-success</span><span class="swatch__hex">#1f8a65</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background: #946200;"></div><div class="swatch__meta"><span class="swatch__name">Warning</span><span class="swatch__var">--color-warning</span><span class="swatch__hex">#946200</span></div></div>
+  </div>
+</section>
+</body>
+</html>

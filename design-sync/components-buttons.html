@@ -1,0 +1,157 @@
+<!-- @dsCard group="Components" name="Bottoni — varianti e stati" -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>edi.md — Bottoni</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Lato:wght@400;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Base condivisa card design-sync — token copiati da design-system.css :root */
+:root {
+  --white: #ffffff;
+  --cursor-orange: #f54e00;
+  --ink: #26251e;
+  --color-bg: #f7f7f4;
+  --color-bg-muted: #efeee8;
+  --color-bg-subtle: #fafaf7;
+  --color-surface: var(--white);
+  --color-surface-strong: var(--ink);
+  --color-text: var(--ink);
+  --color-text-muted: #5a5852;
+  --color-text-soft: #807d72;
+  --color-text-inverse: var(--white);
+  --color-border: #e6e5e0;
+  --color-border-muted: #efeee8;
+  --color-border-strong: var(--ink);
+  --color-accent: var(--cursor-orange);
+  --color-accent-hover: #d04200;
+  --color-accent-active: #b83a00;
+  --color-accent-deep: #c73a00;
+  --color-accent-soft: #fff1e6;
+  --color-accent-border: #f5b892;
+  --color-focus: var(--cursor-orange);
+  --color-danger: #b42318;
+  --color-success: #1f8a65;
+  --color-warning: #946200;
+
+  --font-sans: "Lato", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Inter", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  --font-code: "Fira Code", "Roboto Mono", monospace;
+  --font-mono-ui: "Roboto Mono", monospace;
+
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.06em;
+
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: clamp(16px, 0.5vw + 15px, 18px);
+  --text-xl: clamp(20px, 1vw + 16px, 24px);
+  --text-2xl: clamp(25px, 1.8vw + 18px, 32px);
+  --text-3xl: clamp(33px, 2.8vw + 22px, 44px);
+
+  --leading-xs: 1.35;
+  --leading-sm: 1.45;
+  --leading-md: 1.5;
+  --leading-lg: 1.55;
+  --leading-xl: 1.35;
+  --leading-2xl: 1.25;
+  --leading-3xl: 1.18;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: clamp(20px, 1vw + 16px, 24px);
+  --space-6: clamp(24px, 2vw + 16px, 32px);
+  --space-7: clamp(34px, 3.5vw + 20px, 48px);
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  --border-thin: 1px solid var(--color-border);
+  --border-muted: 1px solid var(--color-border-muted);
+  --border-strong: 1px solid var(--color-border-strong);
+
+  --shadow-sm: 0 1px 2px rgb(38 37 30 / 0.04);
+  --shadow-md: 0 4px 12px rgb(38 37 30 / 0.06);
+  --shadow-focus: 0 0 0 3px rgb(245 78 0 / 0.25);
+
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --duration-slow: 260ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--leading-md);
+  padding: var(--space-6);
+  -webkit-font-smoothing: antialiased;
+}
+
+.card-label {
+  font-family: var(--font-mono-ui);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+
+.ds-button {
+  display: inline-flex; min-height: 44px; align-items: center; justify-content: center;
+  gap: var(--space-2); border: 1px solid transparent; border-radius: var(--radius-sm);
+  cursor: pointer; font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 500;
+  line-height: 1; padding: 12px 24px; text-decoration: none;
+  transition: background-color var(--duration-base) var(--ease-standard),
+    border-color var(--duration-base) var(--ease-standard),
+    color var(--duration-base) var(--ease-standard);
+}
+.ds-button:focus-visible { box-shadow: var(--shadow-focus); }
+.ds-button:disabled { cursor: not-allowed; opacity: 0.58; }
+.ds-button--primary { background: var(--color-accent); color: var(--white); }
+.ds-button--primary:hover { background: var(--color-accent-hover); }
+.ds-button--dark { background: var(--ink); color: var(--white); }
+.ds-button--dark:hover { background: #000; }
+.ds-button--secondary { border-color: var(--color-border-strong); background: var(--color-surface); color: var(--color-text); }
+.ds-button--secondary:hover { background: var(--color-bg-muted); }
+.ds-button--ghost { background: transparent; color: var(--color-text); }
+.ds-button--ghost:hover { background: var(--color-bg-muted); }
+.ds-button--danger { background: var(--color-danger); color: var(--color-text-inverse); }
+.ds-button--danger:hover { background: #951c14; }
+.icon { width: 1em; height: 1em; vertical-align: -0.125em; }
+.row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+.row + .row { margin-top: var(--space-4); }
+h2 { font-family: var(--font-display); font-weight: 500; font-size: var(--text-lg); letter-spacing: var(--tracking-tight); margin: var(--space-5) 0 var(--space-3); }
+h2:first-child { margin-top: 0; }
+</style>
+</head>
+<body>
+<h2>Varianti</h2>
+<div class="row">
+  <button class="ds-button ds-button--primary">Esplora
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>
+  </button>
+  <button class="ds-button ds-button--dark">Scrivimi</button>
+  <button class="ds-button ds-button--secondary">Secondary</button>
+  <button class="ds-button ds-button--ghost">Ghost</button>
+  <button class="ds-button ds-button--danger">Danger</button>
+</div>
+<h2>Stati</h2>
+<div class="row">
+  <button class="ds-button ds-button--primary" disabled>Disabled</button>
+  <button class="ds-button ds-button--primary" style="box-shadow: var(--shadow-focus);">Focus</button>
+  <button class="ds-button ds-button--primary" style="background: var(--color-accent-hover);">Hover</button>
+</div>
+</body>
+</html>
