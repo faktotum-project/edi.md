@@ -2,9 +2,6 @@
 
 ## Font
 
-- **Mioya** — dotcolon (Sora Sagano). Licenza **SIL Open Font License v1.1**
-  (vedi `fonts/LICENSE.md`). Presente in `assets/fonts/` come asset; non
-  attualmente referenziato dalle pagine.
 - Inter, Lato, Fira Code, Roboto Mono, Google Sans Code — caricati da Google Fonts.
 
 ## Grafica

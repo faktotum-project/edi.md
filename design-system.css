@@ -1,15 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 
-/* Mioya — display serif (SIL OFL v1.1, dotcolon). Vedi assets/fonts/LICENSE.md */
-@font-face {
-  font-family: "Mioya";
-  src:
-    url("assets/fonts/MioyaVF.woff2") format("woff2-variations"),
-    url("assets/fonts/MioyaVF.ttf") format("truetype-variations");
-  font-weight: 300 900;
-  font-display: swap;
-}
-
 :root {
   --jet-black: #2d3142;
   --midnight: #1a1d2e;
