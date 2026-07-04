@@ -1,0 +1,6 @@
+# File di lavoro — non vanno serviti dal sito statico
+.claude
+.opencode
+design-sync
+piano.md
+README.md
