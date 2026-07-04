@@ -652,10 +652,11 @@
     }
     .ds-button--spoiler.is-revealed {
       background: transparent;
-      border-color: var(--color-text-muted);
-      color: var(--color-text-muted);
+      border-color: transparent;
+      color: var(--color-accent);
       cursor: default;
       pointer-events: none;
+      font-weight: 700;
     }
 
     @keyframes spoiler-shake {
