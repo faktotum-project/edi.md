@@ -906,7 +906,7 @@ pre {
   display: grid;
   gap: var(--space-7);
   grid-template-columns: 200px minmax(0, 1fr);
-  align-items: start;
+  align-items: center;
 }
 
 .ds-bio__avatar {
