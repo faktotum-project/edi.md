@@ -1,6 +1,7 @@
 # File di lavoro — non vanno serviti dal sito statico
 .claude
 .opencode
+.hallmark
 design-sync
 piano.md
 README.md

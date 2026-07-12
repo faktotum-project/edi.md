@@ -1,0 +1,76 @@
+/* tokens.css — edi.md · design tokens canonici (schema Hallmark, brand preservato)
+ *
+ * Conversione OKLCH esatta della palette storica del brand:
+ *   ink #26251e · paper #f7f7f4 · accent #f54e00 (arancione cursore)
+ * I nomi che collidono con design-system.css (--color-accent, --color-focus…)
+ * portano valori identici: l'ordine di caricamento non cambia la resa.
+ * Fonte di verità per site.css; design-system.css resta intatto per brand.html.
+ */
+
+:root {
+  /* ── Colore — carta / inchiostro / accento ─────────────────────────── */
+  --color-paper:         oklch(97.53% 0.004 106.47);  /* #f7f7f4 */
+  --color-paper-2:       oklch(94.82% 0.0081 98.88);  /* #efeee8 */
+  --color-paper-3:       oklch(98.43% 0.004 106.47);  /* #fafaf7 */
+  --color-surface:       oklch(99.35% 0.0026 106.45); /* near-white caldo, mai #fff pieno */
+  --color-ink:           oklch(26.31% 0.0127 100.51); /* #26251e */
+  --color-ink-2:         oklch(46.03% 0.0099 91.58);  /* #5a5852 — testo muted */
+  --color-ink-3:         oklch(58.9% 0.0168 94.32);   /* #807d72 — testo soft */
+  --color-rule:          oklch(92.13% 0.0068 97.36);  /* #e6e5e0 — hairline */
+  --color-accent:        oklch(65.22% 0.2135 37.99);  /* #f54e00 */
+  --color-accent-hover:  oklch(57.78% 0.1879 38.31);  /* #d04200 */
+  --color-accent-active: oklch(52.8% 0.1709 38.52);   /* #b83a00 */
+  --color-accent-deep:   oklch(55.39% 0.1855 36.97);  /* #c73a00 */
+  --color-accent-soft:   oklch(96.62% 0.0211 60.75);  /* #fff1e6 */
+  --color-focus:         oklch(65.22% 0.2135 37.99);
+  --color-danger:        oklch(50.03% 0.1821 29.51);  /* #b42318 */
+
+  /* ── Tipografia — 2+1: display, body, un solo outlier mono ─────────── */
+  --font-display: "Inter", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  --font-body:    "Lato", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-outlier: "Roboto Mono", ui-monospace, "Google Sans Code", monospace;
+
+  --text-xs:  12px;
+  --text-sm:  14px;
+  --text-md:  16px;
+  --text-lg:  clamp(16px, 0.5vw + 15px, 18px);
+  --text-xl:  clamp(20px, 1vw + 16px, 24px);
+  --text-2xl: clamp(25px, 1.8vw + 18px, 32px);
+  --text-3xl: clamp(33px, 2.8vw + 22px, 44px);
+  --text-display: clamp(2.25rem, 3.5vw + 1rem, 3.75rem); /* headline ≤ 50 caratteri */
+
+  /* ── Spazio — scala 4pt nominata, passi fluidi dal sistema esistente ─ */
+  --space-3xs: 4px;
+  --space-2xs: 8px;
+  --space-xs:  12px;
+  --space-sm:  16px;
+  --space-md:  clamp(20px, 1vw + 16px, 24px);
+  --space-lg:  clamp(24px, 2vw + 16px, 32px);
+  --space-xl:  clamp(34px, 3.5vw + 20px, 48px);
+  --space-2xl: clamp(44px, 5vw + 24px, 64px);
+  --space-3xl: clamp(60px, 9vw + 24px, 96px);
+  --space-4xl: clamp(72px, 14vw + 16px, 128px);
+
+  /* ── Motion — canone hallmark ──────────────────────────────────────── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long:  420ms;
+
+  /* ── Regole, raggi, z-scale nominata ───────────────────────────────── */
+  --rule-hair:   1px;
+  --rule-strong: 2px;
+  --radius-node: 16px;
+  --radius-panel: 12px;
+  --radius-pill: 999px;
+
+  --z-base:     1;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-tooltip:  600;
+}
