@@ -1,13 +1,11 @@
     (function () {
       var audio = document.getElementById('bg-audio');
       var toggle = document.getElementById('audio-toggle');
-      var panel = document.getElementById('audio-panel');
       var nowEl = document.getElementById('audio-now');
-      var listEl = document.getElementById('audio-list');
       var prevBtn = document.getElementById('audio-prev');
       var nextBtn = document.getElementById('audio-next');
 
-      if (!audio || !toggle || !panel || !nowEl || !listEl || !prevBtn || !nextBtn) return;
+      if (!audio || !toggle || !nowEl || !prevBtn || !nextBtn) return;
 
       var TRACKS = [
         { title: 'Calm',           src: 'assets/audio/calm.mp3' },
@@ -17,22 +15,12 @@
         { title: 'Reborn',         src: 'assets/audio/Reborn.mp3' },
         { title: 'Vibrate',        src: 'assets/audio/Vibrate.mp3' }
       ];
-      var trackButtons = Array.prototype.slice.call(listEl.querySelectorAll('.audio-player__track'));
       var currentIndex = 0;
 
       function loadTrack(index, autoplayIfUnmuted) {
         currentIndex = index;
         audio.src = TRACKS[index].src;
         nowEl.textContent = TRACKS[index].title;
-        trackButtons.forEach(function (btn, i) {
-          var active = i === index;
-          btn.classList.toggle('is-active', active);
-          if (active) {
-            btn.setAttribute('aria-current', 'true');
-          } else {
-            btn.removeAttribute('aria-current');
-          }
-        });
         if (autoplayIfUnmuted && !audio.muted) {
           audio.play().catch(function () {});
         }
@@ -76,12 +64,6 @@
 
       nextBtn.addEventListener('click', function () {
         selectTrack((currentIndex + 1) % TRACKS.length);
-      });
-
-      trackButtons.forEach(function (btn, i) {
-        btn.addEventListener('click', function () {
-          selectTrack(i);
-        });
       });
 
       audio.addEventListener('ended', function () {
