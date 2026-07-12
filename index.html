@@ -372,8 +372,8 @@
   <div class="audio-player" id="audio-player">
     <audio id="bg-audio" src="assets/audio/calm.mp3" preload="metadata" autoplay muted></audio>
 
+    <!-- Pannello playlist: rivelato al passaggio del mouse (desktop ≥ 40rem) -->
     <div class="audio-player__panel" id="audio-panel" role="region" aria-label="Playlist">
-      <p class="audio-player__now" id="audio-now" aria-live="polite">Calm</p>
       <p class="audio-player__credit">Playlist generata con AI</p>
 
       <ul class="audio-player__list" id="audio-list">
@@ -384,36 +384,39 @@
         <li><button type="button" class="audio-player__track" data-index="4">Reborn</button></li>
         <li><button type="button" class="audio-player__track" data-index="5">Vibrate</button></li>
       </ul>
-
-      <div class="audio-player__controls">
-        <button type="button" class="audio-player__nav" id="audio-prev" aria-label="Traccia precedente">
-          <svg class="icon audio-player__nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>
-        </button>
-        <button type="button" class="audio-player__nav" id="audio-next" aria-label="Traccia successiva">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>
-        </button>
-      </div>
     </div>
 
-    <!-- Bottone controllo audio -->
-    <button
-      id="audio-toggle"
-      class="audio-toggle is-muted"
-      type="button"
-      aria-label="Attiva audio"
-      aria-pressed="false"
-    >
-      <svg class="audio-toggle__icon audio-toggle__icon--muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
-        <path d="M3 9h4l5-5v16l-5-5H3V9z" />
-        <path d="M16 9l6 6" />
-        <path d="M22 9l-6 6" />
-      </svg>
-      <svg class="audio-toggle__icon audio-toggle__icon--playing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
-        <path d="M3 9h4l5-5v16l-5-5H3V9z" />
-        <path d="M16 9v6" />
-        <path d="M20 6v12" />
-      </svg>
-    </button>
+    <!-- Barra compatta sempre visibile: prec · titolo · play/pausa · succ -->
+    <div class="audio-player__bar">
+      <button type="button" class="audio-player__nav" id="audio-prev" aria-label="Traccia precedente">
+        <svg class="icon audio-player__nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>
+      </button>
+
+      <p class="audio-player__now" id="audio-now" aria-live="polite">Calm</p>
+
+      <button
+        id="audio-toggle"
+        class="audio-toggle is-muted"
+        type="button"
+        aria-label="Attiva audio"
+        aria-pressed="false"
+      >
+        <svg class="audio-toggle__icon audio-toggle__icon--muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+          <path d="M3 9h4l5-5v16l-5-5H3V9z" />
+          <path d="M16 9l6 6" />
+          <path d="M22 9l-6 6" />
+        </svg>
+        <svg class="audio-toggle__icon audio-toggle__icon--playing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+          <path d="M3 9h4l5-5v16l-5-5H3V9z" />
+          <path d="M16 9v6" />
+          <path d="M20 6v12" />
+        </svg>
+      </button>
+
+      <button type="button" class="audio-player__nav" id="audio-next" aria-label="Traccia successiva">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
   </div>
 
   <script src="site.js"></script>

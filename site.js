@@ -38,17 +38,11 @@
         }
       }
 
-      // Su touch (niente hover) il pannello segue lo stato audio: attivo = aperto
-      var touchUI = window.matchMedia && window.matchMedia('(hover: none)').matches;
-
       function updateButton() {
         toggle.setAttribute('aria-pressed', audio.muted ? 'false' : 'true');
         toggle.setAttribute('aria-label', audio.muted ? 'Attiva audio' : 'Disattiva audio');
         toggle.classList.toggle('is-muted', audio.muted);
         toggle.classList.toggle('is-playing', !audio.muted);
-        if (touchUI) {
-          panel.classList.toggle('is-open', !audio.muted);
-        }
       }
 
       // Selezione esplicita di una traccia: attiva sempre l'audio
@@ -101,16 +95,6 @@
       audio.addEventListener('playing', function () {
         nowEl.classList.remove('is-loading');
       });
-
-      // Touch: un tap fuori dal player chiude il pannello senza silenziare
-      if (touchUI) {
-        var player = document.getElementById('audio-player');
-        document.addEventListener('click', function (e) {
-          if (player && !player.contains(e.target)) {
-            panel.classList.remove('is-open');
-          }
-        });
-      }
     })();
 
     (function () {

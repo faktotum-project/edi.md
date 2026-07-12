@@ -843,7 +843,9 @@ body {
 .colophon__inner {
   width: min(100% - 48px, 1180px);
   margin-inline: auto;
-  padding-block: var(--space-lg) var(--space-2xl);
+  /* Extra sul fondo: riserva spazio così la barra audio fissa (in basso a
+     destra) non copre i link del footer su schermi stretti. */
+  padding-block: var(--space-lg) calc(var(--space-2xl) + 72px);
 }
 
 .colophon p {
@@ -889,9 +891,10 @@ body {
 }
 
 .audio-player__panel {
+  /* Mobile: nessun overlay tracklist sopra i contenuti (si naviga con le frecce) */
+  display: none;
   width: min(280px, calc(100vw - 2 * var(--space-md)));
   max-height: min(360px, calc(100vh - 120px));
-  display: flex;
   flex-direction: column;
   gap: var(--space-2xs);
   background: color-mix(in oklab, var(--color-paper-3) 85%, transparent);
@@ -907,15 +910,14 @@ body {
               transform var(--dur-short) var(--ease-out);
 }
 
-.audio-player__panel.is-open {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-}
+/* Desktop (≥ 40rem): il pannello tracklist si rivela al passaggio del mouse
+   o con la tastiera, impilato sopra la barra compatta. Su schermi stretti
+   resta nascosto (display:none) — nessun overlay sui contenuti. */
+@media (min-width: 40rem) {
+  .audio-player__panel {
+    display: flex;
+  }
 
-/* Desktop: il pannello si apre al passaggio del mouse o con la tastiera.
-   Su touch (hover: none) l'apertura è gestita da JS con .is-open. */
-@media (hover: hover) {
   .audio-player:hover .audio-player__panel,
   .audio-player:focus-within .audio-player__panel {
     opacity: 1;
@@ -924,18 +926,26 @@ body {
   }
 }
 
-/* Touch: righe più alte per il tocco */
-@media (hover: none) {
-  .audio-player__track {
-    padding: 10px var(--space-xs);
-  }
-}
-
-.audio-player__now.is-loading::after {
-  content: " …";
+/* Barra compatta: prec · titolo · play/pausa · succ — sempre visibile,
+   raccolta in un unico pill che non copre i contenuti sottostanti. */
+.audio-player__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  max-width: calc(100vw - 2 * var(--space-md));
+  padding: var(--space-3xs);
+  background: color-mix(in oklab, var(--color-paper-3) 92%, transparent);
+  border: var(--rule-hair) solid var(--color-rule);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 24px color-mix(in oklab, var(--color-ink) 12%, transparent);
 }
 
 .audio-player__now {
+  flex: 0 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: var(--font-outlier);
   font-size: var(--text-xs);
   letter-spacing: 0.06em;
@@ -943,6 +953,11 @@ body {
   font-weight: 700;
   color: var(--color-ink);
   margin: 0;
+  padding-inline: var(--space-3xs);
+}
+
+.audio-player__now.is-loading::after {
+  content: " …";
 }
 
 .audio-player__credit {
@@ -991,13 +1006,6 @@ body {
   background: var(--color-accent-soft);
   color: var(--color-ink);
   font-weight: 700;
-}
-
-.audio-player__controls {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-sm);
-  padding-top: var(--space-3xs);
 }
 
 .audio-player__nav {
