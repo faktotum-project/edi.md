@@ -41,15 +41,8 @@
       function updateButton() {
         toggle.setAttribute('aria-pressed', audio.muted ? 'false' : 'true');
         toggle.setAttribute('aria-label', audio.muted ? 'Attiva audio' : 'Disattiva audio');
-        toggle.setAttribute('aria-expanded', audio.muted ? 'false' : 'true');
         toggle.classList.toggle('is-muted', audio.muted);
         toggle.classList.toggle('is-playing', !audio.muted);
-        panel.classList.toggle('is-open', !audio.muted);
-        if (audio.muted) {
-          panel.setAttribute('hidden', '');
-        } else {
-          panel.removeAttribute('hidden');
-        }
       }
 
       // Parte sempre muto (autoplay garantito), primo click dell'utente sblocca l'audio
