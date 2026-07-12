@@ -25,51 +25,41 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="design-system.css" />
+  <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="site.css" />
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav class="site-nav" aria-label="Navigazione principale">
-    <div class="site-nav__inner">
-      <a href="#top" class="brand-wordmark" aria-label="edi.md — home">
-        <svg viewBox="0 0 800 200" fill="none" aria-hidden="true">
-          <text x="385" y="126" font-family="'Inter', system-ui, 'Helvetica Neue', sans-serif" font-size="72" font-weight="400" letter-spacing="-2.16" fill="#26251e" text-anchor="end">edi</text>
-          <text x="385" y="126" font-family="'Inter', system-ui, 'Helvetica Neue', sans-serif" font-size="72" font-weight="400" letter-spacing="-2.16" fill="#f54e00" text-anchor="start">.md</text>
-        </svg>
-      </a>
-      <ul class="site-nav__links">
-        <li><a href="#about" class="site-nav__link">About</a></li>
-        <li><a href="#projects" class="site-nav__link">Progetti</a></li>
-        <li><a href="#skills" class="site-nav__link">Skills</a></li>
-        <li><a href="#experience" class="site-nav__link">Experience</a></li>
-        <li><a href="#contact" class="site-nav__link">Contatti</a></li>
-      </ul>
-    </div>
-  </nav>
+  <a class="skip-link" href="#main">Salta al contenuto</a>
 
-  <!-- Hero -->
-  <section class="ds-hero" aria-label="Hero">
-    <div class="ds-hero__inner">
-      <div class="ds-hero__text">
-        <p class="ds-hero__eyebrow">Vibecoder — Orchestrator — Enthusiast</p>
-        <h1 class="ds-hero__headline">
+  <!-- Nav — N8 Terminal command -->
+  <header class="nav-term">
+    <pre class="nav-term__line" aria-label="Navigazione principale"><span class="nav-term__prompt" aria-hidden="true">&gt;</span> <a href="#top" class="nav-term__brand">edi<span>.md</span></a> <a href="#about" class="nav-term__flag nav-term__flag--opt">--about</a> <a href="#projects" class="nav-term__flag">--progetti</a> <a href="#skills" class="nav-term__flag nav-term__flag--opt">--skills</a> <a href="#experience" class="nav-term__flag nav-term__flag--opt">--experience</a> <a href="#contact" class="nav-term__flag">--contatti</a></pre>
+  </header>
+
+  <main id="main">
+
+    <!-- La mappa di sistema — la headline vive nella stessa riga della board -->
+    <div class="map" id="map">
+      <svg class="map__edges" id="map-edges" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"></svg>
+
+      <!-- Orientamento: header allineato con la board -->
+      <section class="orient" id="top" aria-labelledby="orient-title">
+        <h1 class="orient__headline" id="orient-title">
           Non scrivo codice.<br />
-          Orchestro <em class="ds-hero__rotator" id="rotator" aria-live="polite">agenti AI</em> che lavorano per me.
+          Orchestro <em class="orient__rotator" id="rotator" aria-live="polite">agenti AI</em>.
         </h1>
-        <p class="ds-hero__sub">
+        <p class="orient__sub">
           Agenti autonomi, automazione intelligente, prodotti digitali.
-          Descrivi cosa vuoi — l'AI costruisce il resto.
+          Descrivi cosa vuoi — l'AI costruisce il resto. La mappa accanto è il sistema al lavoro.
         </p>
-        <div class="ds-hero__actions">
-          <a href="#projects" class="ds-button ds-button--primary">Vedi i progetti</a>
-          <a href="#contact" class="ds-button ds-button--dark">Scrivimi</a>
-        </div>
-      </div>
-      <div class="ds-hero__media">
-        <svg class="orch-board" viewBox="0 0 560 480" fill="none" role="img" aria-label="Diagramma animato: un prompt entra in un terminale e viene orchestrato verso più agenti AI">
+      </section>
 
-          <!-- Percorso terminale → asterisco -->
+      <!-- Hub: board di orchestrazione -->
+      <figure class="map__board" id="hub">
+        <svg class="orch-board" viewBox="0 0 560 480" fill="none" role="img" aria-label="Diagramma animato: un prompt entra in un pannello di comando e viene orchestrato verso più agenti AI">
+
+          <!-- Percorso pannello → asterisco -->
           <path id="orch-p0" class="orch-path orch-path--trunk" d="M 235 115 C 300 115, 250 165, 250 200" pathLength="1" />
 
           <!-- Lane: asterisco → pill -->
@@ -137,13 +127,11 @@
           <text x="352" y="248" class="orch-mono orch-microlabel">[OK]</text>
           <text x="170" y="194" class="orch-mono orch-microlabel">PIPE 01</text>
 
-          <!-- Terminale -->
+          <!-- Pannello di comando (niente finto chrome: cornice + label) -->
           <g class="orch-terminal">
             <rect x="15" y="55" width="220" height="120" rx="12" class="orch-terminal__box" />
-            <circle cx="35" cy="75" r="3.5" fill="#f54e00" />
-            <circle cx="47" cy="75" r="3.5" fill="#f54e00" opacity="0.55" />
-            <circle cx="59" cy="75" r="3.5" fill="#f54e00" opacity="0.3" />
-            <text x="31" y="106" class="orch-mono orch-terminal__line"><tspan fill="#f54e00">&gt;</tspan> <tspan id="orch-typed"></tspan><tspan id="orch-caret" fill="#f54e00">▌</tspan></text>
+            <text x="31" y="80" class="orch-mono orch-terminal__tag">EDI SHELL</text>
+            <text x="31" y="106" class="orch-mono orch-terminal__line"><tspan class="orch-prompt">&gt;</tspan> <tspan id="orch-typed"></tspan><tspan id="orch-caret" class="orch-prompt">▌</tspan></text>
             <text x="31" y="130" class="orch-mono orch-terminal__out">agents ...... 5 online</text>
             <text x="31" y="150" class="orch-mono orch-terminal__out">status ...... running</text>
           </g>
@@ -152,347 +140,281 @@
           <g class="orch-hub">
             <circle cx="250" cy="240" r="34" class="orch-hub__halo" />
             <g class="orch-asterisk">
-              <path d="M 250 222 V 258 M 234.4 231 L 265.6 249 M 234.4 249 L 265.6 231" stroke="#f54e00" stroke-width="7" stroke-linecap="round" />
+              <path d="M 250 222 V 258 M 234.4 231 L 265.6 249 M 234.4 249 L 265.6 231" stroke-width="7" stroke-linecap="round" />
             </g>
           </g>
         </svg>
-      </div>
-    </div>
-    <div class="hero-readout" aria-hidden="true">
-      <span id="readout-time">GMT+1 IT --:--</span>
-      <span id="readout-pos">0000 X 0000 Y</span>
-      <span>Agents [3] — Online</span>
-    </div>
-  </section>
+      </figure>
 
-  <!-- About / Bio -->
-  <section class="section" id="about" aria-labelledby="about-title">
-    <div class="section__inner">
-      <div class="section__header">
-        <span class="section__number" aria-hidden="true">01</span>
-        <p class="section__eyebrow">Chi sono</p>
-        <h2 class="section__title" id="about-title">About</h2>
-      </div>
-      <div class="ds-bio">
-        <div class="spec-card">
-          <p class="spec-card__row"><span>Location</span>IT</p>
-          <p class="spec-card__row"><span>Focus</span>LOCAL AGENTS</p>
-          <p class="spec-card__row"><span>Skill</span>DESIGN SYS<br>AUDIO SYS<br>SWARM SYS</p>
-          <p class="spec-card__row"><span>Status</span><b class="spec-card__status"><span class="spec-card__dot"></span>Online</b></p>
+      <!-- Nodo About -->
+      <section class="node node--about" id="about" data-reveal aria-labelledby="about-title">
+        <h2 class="node__title" id="about-title">About</h2>
+        <p>
+          <strong>Ciao, sono Edi.</strong> Sono un vibecoder: progetto sistemi, non singole righe di codice.
+          Definisco l'architettura, scrivo i prompt giusti, e lascio che gli agenti AI eseguano —
+          dal primo commit al deploy in produzione.
+        </p>
+        <p>
+          Non è delega, è direzione: il ragionamento strategico resta umano, l'esecuzione è AI.
+          Il risultato è uno stack fatto di agenti, API e automazione che si muove alla velocità
+          del pensiero, non della tastiera.
+        </p>
+        <dl class="node__spec">
+          <div class="node__spec-row"><dt>Location</dt><dd>IT</dd></div>
+          <div class="node__spec-row"><dt>Focus</dt><dd>LOCAL AGENTS</dd></div>
+          <div class="node__spec-row"><dt>Skill</dt><dd>DESIGN SYS<br />AUDIO SYS<br />SWARM SYS</dd></div>
+          <div class="node__spec-row"><dt>Status</dt><dd class="node__status"><span class="node__status-dot"></span>Online</dd></div>
+        </dl>
+      </section>
+
+      <!-- Zona progetti -->
+      <section class="zone zone--projects" id="projects" data-reveal aria-labelledby="projects-title">
+        <h2 class="zone__title" id="projects-title">Progetti</h2>
+        <div class="zone__grid">
+
+          <article class="node node--project">
+            <p class="node__meta">2026 · AI Agents / R&amp;D</p>
+            <div class="node__body">
+              <h3 class="node__name">faktotum</h3>
+              <p>
+                Hub tecnologico agentico — il laboratorio dove sperimento nuove tecnologie AI,
+                agenti autonomi e workflow prima che diventino prodotti.
+              </p>
+            </div>
+            <div class="node__footer">
+              <ul class="taglist">
+                <li>AI Agents</li>
+                <li>R&amp;D</li>
+                <li>Automation</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="node node--project is-core">
+            <p class="node__meta">2026 · AI Agents / Bitcoin</p>
+            <div class="node__body">
+              <h3 class="node__name">bitcode</h3>
+              <p>
+                Agente di coding da terminale, in stile Claude Code, con integrazione nativa Bitcoin
+                e Lightning Network. Privacy by design: nessuna chiave o credenziale lascia mai la macchina.
+              </p>
+            </div>
+            <div class="node__footer">
+              <ul class="taglist">
+                <li>AI Agents</li>
+                <li>Bitcoin</li>
+                <li>CLI</li>
+              </ul>
+              <a href="https://github.com/bc1edi/bitcode" class="node__link" target="_blank" rel="noopener">Esplora bitcode <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+            </div>
+          </article>
+
+          <article class="node node--project">
+            <p class="node__meta">2026 · Vibe Coding</p>
+            <div class="node__body">
+              <h3 class="node__name">edi.md</h3>
+              <p>
+                Sito portfolio sviluppato con agenti AI. Design system, audio immersivo,
+                stack modulare e integrazione continua.
+              </p>
+            </div>
+            <div class="node__footer">
+              <ul class="taglist">
+                <li>Vibe Coding</li>
+                <li>Design</li>
+                <li>Automation</li>
+              </ul>
+              <a href="https://github.com/bc1edi/edi.md" class="node__link" target="_blank" rel="noopener">Esplora edi.md <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+            </div>
+          </article>
+
+          <article class="node node--project">
+            <p class="node__meta">Work in Progress · Editoria AI</p>
+            <div class="node__body">
+              <h3 class="node__name">habilis</h3>
+              <p>
+                Enciclica artificiale — progetto editoriale generato con agenti AI.
+                Un libro in lavorazione, ancora work in progress.
+              </p>
+            </div>
+            <div class="node__footer">
+              <ul class="taglist">
+                <li>AI Agents</li>
+                <li>Editoria</li>
+                <li>WIP</li>
+              </ul>
+              <div class="node__links">
+                <a href="https://habilis-book.com/anteprima.html" class="node__link" target="_blank" rel="noopener">Leggi il cap. 1 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+                <a href="https://habilis-book.com" class="node__link node__link--muted" target="_blank" rel="noopener">habilis-book.com</a>
+              </div>
+            </div>
+          </article>
+
         </div>
-        <div class="ds-bio__content">
-          <p class="ds-bio__role">Vibecoder</p>
-          <h2 class="ds-bio__name" id="about-title">Ciao, sono Edi.</h2>
-          <p>
-            Sono un vibecoder: progetto sistemi, non singole righe di codice. Definisco l'architettura,
-            scrivo i prompt giusti, e lascio che gli agenti AI eseguano — dal primo commit al deploy in produzione.
-          </p>
-          <p>
-            Non è delega, è direzione: il ragionamento strategico resta umano, l'esecuzione è AI.
-            Il risultato è uno stack fatto di agenti, API e automazione che si muove alla velocità del pensiero, non della tastiera.
-          </p>
-          <div class="ds-cluster" style="margin-top: var(--space-5);">
-            <span class="ds-badge ds-badge--technical">Local</span>
-            <span class="ds-badge ds-badge--technical">Vibe Coding</span>
-            <span class="ds-badge ds-badge--technical">AI Agents</span>
-            <span class="ds-badge ds-badge--technical">Automation</span>
-            <span class="ds-badge ds-badge--technical">Full-Stack</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- Projects -->
-  <section class="section section--alt" id="projects" aria-labelledby="projects-title">
-    <div class="section__inner">
-      <div class="section__header">
-        <span class="section__number" aria-hidden="true">02</span>
-        <p class="section__eyebrow">Lavori selezionati</p>
-        <h2 class="section__title" id="projects-title">Progetti</h2>
-      </div>
+      <!-- Nodo Skills: la legenda delle capacità -->
+      <section class="node node--skills" id="skills" data-reveal aria-labelledby="skills-title">
+        <h2 class="node__title" id="skills-title">Skills</h2>
 
-      <div class="projects-grid">
+        <h3 class="node__group">Vibecoder</h3>
+        <ul class="taglist">
+          <li>AI Agents</li>
+          <li>Prompt Engineering</li>
+          <li>Automation</li>
+          <li>Tool Orchestration</li>
+          <li>Agent Media Management</li>
+        </ul>
 
-        <article class="ds-project-card">
-          <div class="ds-project-card__meta">2026 &nbsp;·&nbsp; AI Agents / R&amp;D</div>
-          <div class="ds-project-card__body">
-            <h3 class="ds-project-card__title">faktotum</h3>
-            <p class="ds-project-card__desc">
-              Hub tecnologico agentico — il laboratorio dove sperimento nuove tecnologie AI, agenti autonomi e workflow prima che diventino prodotti.
+        <h3 class="node__group">Tecnologia</h3>
+        <ul class="taglist">
+          <li>JavaScript / TypeScript</li>
+          <li>Python</li>
+          <li>Docker</li>
+          <li>Git / CI</li>
+          <li>Bitcoin / Lightning</li>
+        </ul>
+
+        <h3 class="node__group">Brand &amp; Design</h3>
+        <ul class="taglist">
+          <li>Design System</li>
+          <li>Personal Brand</li>
+          <li>Audio System</li>
+        </ul>
+      </section>
+
+      <!-- Rotta: experience come percorso nel tempo -->
+      <section class="route" id="experience" data-reveal aria-labelledby="experience-title">
+        <h2 class="route__title" id="experience-title">Experience</h2>
+        <ol class="route__line">
+          <li class="route__stop route__stop--current">
+            <p class="route__date">2026 — presente</p>
+            <h3 class="route__name">Freelance Vibecoder</h3>
+            <p class="route__body">
+              Sviluppo di prodotti digitali con agenti AI autonomi. Automazione di workflow,
+              integrazione API, design-to-code.
             </p>
-          </div>
-          <div class="ds-project-card__footer">
-            <div class="ds-cluster">
-              <span class="ds-badge ds-badge--technical">AI Agents</span>
-              <span class="ds-badge ds-badge--technical">R&amp;D</span>
-              <span class="ds-badge ds-badge--technical">Automation</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="ds-project-card">
-          <div class="ds-project-card__meta">2026 &nbsp;·&nbsp; AI Agents / Bitcoin</div>
-          <div class="ds-project-card__body">
-            <h3 class="ds-project-card__title">bitcode</h3>
-            <p class="ds-project-card__desc">
-              Agente di coding da terminale, in stile Claude Code, con integrazione nativa Bitcoin e Lightning Network. Privacy by design: nessuna chiave o credenziale lascia mai la macchina.
+          </li>
+          <li class="route__stop">
+            <p class="route__date">2016 — presente</p>
+            <h3 class="route__name">Bitcoiner</h3>
+            <p class="route__body">
+              Gestione nodi, analisi on-chain, automazione transazioni, trading algoritmico
+              e infrastruttura Bitcoin.
             </p>
-          </div>
-          <div class="ds-project-card__footer">
-            <div class="ds-cluster">
-              <span class="ds-badge ds-badge--technical">AI Agents</span>
-              <span class="ds-badge ds-badge--technical">Bitcoin</span>
-              <span class="ds-badge ds-badge--technical">CLI</span>
-            </div>
-            <a href="https://github.com/bc1edi/bitcode" class="ds-button ds-button--explore" style="min-height: 32px; font-size: var(--text-xs);" target="_blank" rel="noopener">Esplora <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
-          </div>
-        </article>
-
-        <article class="ds-project-card">
-          <div class="ds-project-card__meta">2026 &nbsp;·&nbsp; Vibe Coding</div>
-          <div class="ds-project-card__body">
-            <h3 class="ds-project-card__title">edi.md</h3>
-            <p class="ds-project-card__desc">
-              Sito portfolio sviluppato con agenti AI. Design system, audio immersivo, stack modulare e integrazione continua.
+          </li>
+          <li class="route__stop">
+            <p class="route__date">2015 — 2026</p>
+            <h3 class="route__name">Restaurant Manager</h3>
+            <p class="route__body">
+              Gestione operativa, coordinamento team, ottimizzazione processi e controllo qualità
+              nel settore della ristorazione.
             </p>
-          </div>
-          <div class="ds-project-card__footer">
-            <div class="ds-cluster">
-              <span class="ds-badge ds-badge--technical">Vibe Coding</span>
-              <span class="ds-badge ds-badge--technical">Design</span>
-              <span class="ds-badge ds-badge--technical">Automation</span>
-            </div>
-            <a href="https://github.com/bc1edi/edi.md" class="ds-button ds-button--explore" style="min-height: 32px; font-size: var(--text-xs);" target="_blank" rel="noopener">Esplora <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
-          </div>
-        </article>
+          </li>
+        </ol>
+      </section>
 
-        <article class="ds-project-card">
-          <div class="ds-project-card__meta">Work in Progress &nbsp;·&nbsp; Editoria AI</div>
-          <div class="ds-project-card__body">
-            <h3 class="ds-project-card__title">habilis</h3>
-            <p class="ds-project-card__desc">
-              Enciclica artificiale — progetto editoriale generato con agenti AI. Un libro in lavorazione, ancora work in progress.
-            </p>
-          </div>
-          <div class="ds-project-card__footer">
-            <div class="ds-cluster">
-              <span class="ds-badge ds-badge--technical">AI Agents</span>
-              <span class="ds-badge ds-badge--technical">Editoria</span>
-              <span class="ds-badge ds-badge--technical">WIP</span>
-            </div>
-            <button class="ds-button ds-button--spoiler" id="spoiler-btn" type="button">Spoiler</button>
-          </div>
-        </article>
-
-      </div>
+      <!-- Legenda + strumentazione -->
+      <aside class="map__legend" data-reveal aria-label="Legenda della mappa">
+        <p class="map__legend-head">Legenda</p>
+        <ul>
+          <li><span class="lg-swatch lg-swatch--hub" aria-hidden="true"></span> hub — orchestrazione</li>
+          <li><span class="lg-swatch lg-swatch--node" aria-hidden="true"></span> nodo — contenuto</li>
+          <li><span class="lg-swatch lg-swatch--flow" aria-hidden="true"></span> flusso — prompt in uscita</li>
+          <li><span class="lg-swatch lg-swatch--route" aria-hidden="true"></span> rotta — percorso nel tempo</li>
+        </ul>
+        <p class="map__readout" aria-hidden="true">
+          <span id="readout-time">GMT+1 IT --:--</span>
+          <span id="readout-pos">0000 X 0000 Y</span>
+          <span>Agents [5] — Online</span>
+        </p>
+      </aside>
     </div>
-  </section>
 
-  <!-- Skills -->
-  <section class="section" id="skills" aria-labelledby="skills-title">
-    <div class="section__inner">
-      <div class="section__header">
-        <span class="section__number" aria-hidden="true">03</span>
-        <p class="section__eyebrow">Competenze</p>
-        <h2 class="section__title" id="skills-title">Skills</h2>
-      </div>
-
-      <div class="skills-layout">
-
-        <div>
-          <p class="skills-group__label">Vibecoder</p>
-          <div class="ds-skill-grid" style="grid-template-columns: 1fr 1fr;">
-            <div class="ds-skill-cell">
-              <span class="ds-skill-cell__label">AI Agents</span>
-              <div class="ds-skill-cell__bar"><div class="ds-skill-cell__bar-fill" style="width: 92%;"></div></div>
-            </div>
-            <div class="ds-skill-cell">
-              <span class="ds-skill-cell__label">Prompt Engineering</span>
-              <div class="ds-skill-cell__bar"><div class="ds-skill-cell__bar-fill" style="width: 90%;"></div></div>
-            </div>
-            <div class="ds-skill-cell">
-              <span class="ds-skill-cell__label">Automation</span>
-              <div class="ds-skill-cell__bar"><div class="ds-skill-cell__bar-fill" style="width: 88%;"></div></div>
-            </div>
-            <div class="ds-skill-cell">
-              <span class="ds-skill-cell__label">Tool Orchestration</span>
-              <div class="ds-skill-cell__bar"><div class="ds-skill-cell__bar-fill" style="width: 85%;"></div></div>
-            </div>
-            <div class="ds-skill-cell">
-              <span class="ds-skill-cell__label">Agent Media Management</span>
-              <div class="ds-skill-cell__bar"><div class="ds-skill-cell__bar-fill" style="width: 85%;"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <p class="skills-group__label">Tecnologia</p>
-          <div class="ds-skill-grid" style="grid-template-columns: 1fr 1fr;">
-            <div class="ds-skill-cell">
-              <span class="ds-skill-cell__label">JavaScript / TypeScript</span>
-              <div class="ds-skill-cell__bar"><div class="ds-skill-cell__bar-fill" style="width: 87%;"></div></div>
-            </div>
-            <div class="ds-skill-cell">
-              <span class="ds-skill-cell__label">Python</span>
-              <div class="ds-skill-cell__bar"><div class="ds-skill-cell__bar-fill" style="width: 80%;"></div></div>
-            </div>
-            <div class="ds-skill-cell">
-              <span class="ds-skill-cell__label">Docker</span>
-              <div class="ds-skill-cell__bar"><div class="ds-skill-cell__bar-fill" style="width: 75%;"></div></div>
-            </div>
-            <div class="ds-skill-cell">
-              <span class="ds-skill-cell__label">Git / CI</span>
-              <div class="ds-skill-cell__bar"><div class="ds-skill-cell__bar-fill" style="width: 88%;"></div></div>
-            </div>
-            <div class="ds-skill-cell">
-              <span class="ds-skill-cell__label">Bitcoin / Lightning</span>
-              <div class="ds-skill-cell__bar"><div class="ds-skill-cell__bar-fill" style="width: 90%;"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <p class="skills-group__label">Brand &amp; Design</p>
-          <div class="ds-skill-grid" style="grid-template-columns: 1fr 1fr;">
-            <div class="ds-skill-cell">
-              <span class="ds-skill-cell__label">Design System</span>
-              <div class="ds-skill-cell__bar"><div class="ds-skill-cell__bar-fill" style="width: 85%;"></div></div>
-            </div>
-            <div class="ds-skill-cell">
-              <span class="ds-skill-cell__label">Personal Brand</span>
-              <div class="ds-skill-cell__bar"><div class="ds-skill-cell__bar-fill" style="width: 80%;"></div></div>
-            </div>
-            <div class="ds-skill-cell">
-              <span class="ds-skill-cell__label">Audio System</span>
-              <div class="ds-skill-cell__bar"><div class="ds-skill-cell__bar-fill" style="width: 80%;"></div></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience / Timeline -->
-  <section class="section section--alt" id="experience" aria-labelledby="experience-title">
-    <div class="section__inner">
-      <div class="section__header">
-        <span class="section__number" aria-hidden="true">04</span>
-        <p class="section__eyebrow">Percorso</p>
-        <h2 class="section__title" id="experience-title">Experience</h2>
-      </div>
-
-      <ul class="ds-timeline">
-
-        <li class="ds-timeline__item ds-timeline__item--current">
-          <div class="ds-timeline__dot"></div>
-          <p class="ds-timeline__date">2026 — presente</p>
-          <h3 class="ds-timeline__title">Freelance Vibecoder</h3>
-          <p class="ds-timeline__body">
-            Sviluppo di prodotti digitali con agenti AI autonomi. Automazione di workflow, integrazione API, design-to-code.
-          </p>
-        </li>
-
-        <li class="ds-timeline__item">
-          <div class="ds-timeline__dot"></div>
-          <p class="ds-timeline__date">2016 — presente</p>
-          <h3 class="ds-timeline__title">Bitcoiner</h3>
-          <p class="ds-timeline__body">
-            Gestione nodi, analisi on-chain, automazione transazioni, trading algoritmico e infrastruttura Bitcoin.
-          </p>
-        </li>
-
-        <li class="ds-timeline__item">
-          <div class="ds-timeline__dot"></div>
-          <p class="ds-timeline__date">2015 — 2026</p>
-          <h3 class="ds-timeline__title">Restaurant Manager</h3>
-          <p class="ds-timeline__body">
-            Gestione operativa, coordinamento team, ottimizzazione processi e controllo qualità nel settore della ristorazione.
-          </p>
-        </li>
-
-      </ul>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section class="ds-contact-strip" id="contact" aria-labelledby="contact-title">
-    <div class="ds-contact-strip__inner">
-      <h2 class="ds-contact-strip__heading" id="contact-title">Lavoriamo insieme.</h2>
-      <p class="ds-contact-strip__sub">
-        Hai un progetto con agenti AI, automazione o Bitcoin? Parliamone.
+    <!-- CTA — uno solo, sotto la mappa -->
+    <section class="cta wrap" id="contact" aria-labelledby="contact-title">
+      <h2 class="cta__title" id="contact-title">Lavoriamo insieme.</h2>
+      <p class="cta__sub">Hai un progetto con agenti AI, automazione o Bitcoin? Orchestro il team di agenti giusto per portarlo dal prompt al deploy. Parliamone.</p>
+      <a href="mailto:admin@faktotum.it" class="cta__btn">Scrivimi una mail <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+      <p class="cta__links">
+        <a href="https://github.com/bc1edi" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><rect x="4" y="3" width="4" height="4"/><rect x="16" y="3" width="4" height="4"/><rect x="10" y="16" width="4" height="4"/><path d="M6 7v3h12V7"/><path d="M12 10v6"/></svg> GitHub</a>
+        <span class="cta__sep" aria-hidden="true">◆</span>
+        <a href="https://x.com/edi_btc" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M5 4l14 16"/><path d="M19 4L5 20"/></svg> X</a>
+        <span class="cta__sep" aria-hidden="true">◆</span>
+        <a href="https://it.linkedin.com/in/edi-de-rosa-12302290" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M5 4v3"/><path d="M5 11v9"/><path d="M11 20v-9"/><path d="M11 13h5v7"/></svg> LinkedIn</a>
+        <span class="cta__sep" aria-hidden="true">◆</span>
+        <a href="https://t.me/Addr1000" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4z"/></svg> Telegram</a>
       </p>
-      <div style="margin-bottom: var(--space-7);">
-        <a href="mailto:admin@faktotum.it" class="ds-button ds-button--dark">Scrivimi una mail</a>
-      </div>
-      <div class="ds-contact-strip__links">
-        <a href="https://github.com/bc1edi" class="ds-contact-strip__link" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><rect x="4" y="3" width="4" height="4"/><rect x="16" y="3" width="4" height="4"/><rect x="10" y="16" width="4" height="4"/><path d="M6 7v3h12V7"/><path d="M12 10v6"/></svg> GitHub</a>
-        <span style="opacity: 0.4; font-size: 10px;">◆</span>
-        <a href="https://x.com/edi_btc" class="ds-contact-strip__link" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M5 4l14 16"/><path d="M19 4L5 20"/></svg> X</a>
-        <span style="opacity: 0.4; font-size: 10px;">◆</span>
-        <a href="https://it.linkedin.com/in/edi-de-rosa-12302290" class="ds-contact-strip__link" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M5 4v3"/><path d="M5 11v9"/><path d="M11 20v-9"/><path d="M11 13h5v7"/></svg> LinkedIn</a>
-        <span style="opacity: 0.4; font-size: 10px;">◆</span>
-        <a href="https://t.me/Addr1000" class="ds-contact-strip__link" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4z"/></svg> Telegram</a>
-        <span style="opacity: 0.4; font-size: 10px;">◆</span>
-        <a href="mailto:admin@faktotum.it" class="ds-contact-strip__link"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="M3 7l9 6 9-6"/></svg> Email</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <a href="#top" class="brand-wordmark" aria-label="edi.md — home">
-        <svg viewBox="0 0 800 200" fill="none" aria-hidden="true">
-          <text x="385" y="126" font-family="'Inter', system-ui, 'Helvetica Neue', sans-serif" font-size="72" font-weight="400" letter-spacing="-2.16" fill="#26251e" text-anchor="end">edi</text>
-          <text x="385" y="126" font-family="'Inter', system-ui, 'Helvetica Neue', sans-serif" font-size="72" font-weight="400" letter-spacing="-2.16" fill="#f54e00" text-anchor="start">.md</text>
-        </svg>
-      </a>
-      <p class="site-footer__copy">© 2026 Edi — Fatto con cura. · <a href="brand.html" style="color: inherit;">Brand</a></p>
+  </main>
+
+  <!-- Footer — Ft4 colophon -->
+  <footer class="colophon">
+    <div class="colophon__inner">
+      <p>
+        <a href="#top" class="nav-term__brand">edi<span>.md</span></a> — mappa di sistema orchestrata da Edi,
+        costruita da agenti AI. Tipografia: Inter, Lato, Roboto Mono. Inchiostro #26251e su carta #f7f7f4,
+        accento #f54e00. Tema chiaro fisso. Build 2026.07. © 2026 Edi — Fatto con cura.
+        <a href="brand.html">Brand</a> · <a href="https://github.com/bc1edi" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="https://x.com/edi_btc" target="_blank" rel="noopener">X</a> ·
+        <a href="https://it.linkedin.com/in/edi-de-rosa-12302290" target="_blank" rel="noopener">LinkedIn</a> ·
+        <a href="https://t.me/Addr1000" target="_blank" rel="noopener">Telegram</a> ·
+        <a href="mailto:admin@faktotum.it">admin@faktotum.it</a>
+      </p>
     </div>
   </footer>
 
-  <!-- Audio di sottofondo -->
-  <audio id="bg-audio" src="assets/audio/sito edi.mp3" loop preload="auto" autoplay muted></audio>
+  <!-- Player audio di sottofondo — playlist generata con AI -->
+  <div class="audio-player" id="audio-player">
+    <audio id="bg-audio" src="assets/audio/calm.mp3" preload="auto" autoplay muted></audio>
 
-  <!-- Bottone controllo audio -->
-  <button
-    id="audio-toggle"
-    class="audio-toggle is-muted"
-    type="button"
-    aria-label="Attiva audio"
-    aria-pressed="false"
-    aria-live="polite"
-  >
-    <svg class="audio-toggle__icon audio-toggle__icon--muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
-      <path d="M3 9h4l5-5v16l-5-5H3V9z" />
-      <path d="M16 9l6 6" />
-      <path d="M22 9l-6 6" />
-    </svg>
-    <svg class="audio-toggle__icon audio-toggle__icon--playing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
-      <path d="M3 9h4l5-5v16l-5-5H3V9z" />
-      <path d="M16 9v6" />
-      <path d="M20 6v12" />
-    </svg>
-  </button>
+    <div class="audio-player__panel" id="audio-panel" role="region" aria-label="Playlist" hidden>
+      <p class="audio-player__now" id="audio-now" aria-live="polite">Calm</p>
+      <p class="audio-player__credit">Playlist generata con AI</p>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var btn = document.getElementById('spoiler-btn');
-      if (btn) {
-        btn.addEventListener('click', function() {
-          if (btn.classList.contains('is-revealed')) return;
-          btn.classList.add('is-error');
-          btn.textContent = 'a breve';
-          setTimeout(function() {
-            btn.classList.remove('is-error');
-            btn.classList.add('is-revealed');
-          }, 500);
-        });
-      }
-    });
-  </script>
+      <ul class="audio-player__list" id="audio-list">
+        <li><button type="button" class="audio-player__track is-active" data-index="0" aria-current="true">Calm</button></li>
+        <li><button type="button" class="audio-player__track" data-index="1">Celtik Spoon</button></li>
+        <li><button type="button" class="audio-player__track" data-index="2">Down Bad Again</button></li>
+        <li><button type="button" class="audio-player__track" data-index="3">Progressive</button></li>
+        <li><button type="button" class="audio-player__track" data-index="4">Reborn</button></li>
+        <li><button type="button" class="audio-player__track" data-index="5">Vibrate</button></li>
+      </ul>
+
+      <div class="audio-player__controls">
+        <button type="button" class="audio-player__nav" id="audio-prev" aria-label="Traccia precedente">
+          <svg class="icon audio-player__nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>
+        </button>
+        <button type="button" class="audio-player__nav" id="audio-next" aria-label="Traccia successiva">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Bottone controllo audio -->
+    <button
+      id="audio-toggle"
+      class="audio-toggle is-muted"
+      type="button"
+      aria-label="Attiva audio"
+      aria-pressed="false"
+      aria-expanded="false"
+      aria-controls="audio-panel"
+    >
+      <svg class="audio-toggle__icon audio-toggle__icon--muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+        <path d="M3 9h4l5-5v16l-5-5H3V9z" />
+        <path d="M16 9l6 6" />
+        <path d="M22 9l-6 6" />
+      </svg>
+      <svg class="audio-toggle__icon audio-toggle__icon--playing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+        <path d="M3 9h4l5-5v16l-5-5H3V9z" />
+        <path d="M16 9v6" />
+        <path d="M20 6v12" />
+      </svg>
+    </button>
+  </div>
+
   <script src="site.js"></script>
 
 </body>
