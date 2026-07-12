@@ -907,11 +907,32 @@ body {
               transform var(--dur-short) var(--ease-out);
 }
 
-.audio-player:hover .audio-player__panel,
-.audio-player:focus-within .audio-player__panel {
+.audio-player__panel.is-open {
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: auto;
+}
+
+/* Desktop: il pannello si apre al passaggio del mouse o con la tastiera.
+   Su touch (hover: none) l'apertura è gestita da JS con .is-open. */
+@media (hover: hover) {
+  .audio-player:hover .audio-player__panel,
+  .audio-player:focus-within .audio-player__panel {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+}
+
+/* Touch: righe più alte per il tocco */
+@media (hover: none) {
+  .audio-player__track {
+    padding: 10px var(--space-xs);
+  }
+}
+
+.audio-player__now.is-loading::after {
+  content: " …";
 }
 
 .audio-player__now {
@@ -983,8 +1004,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border: var(--rule-hair) solid var(--color-rule);
   border-radius: var(--radius-pill);
   background: var(--color-surface);

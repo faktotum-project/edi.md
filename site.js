@@ -38,11 +38,26 @@
         }
       }
 
+      // Su touch (niente hover) il pannello segue lo stato audio: attivo = aperto
+      var touchUI = window.matchMedia && window.matchMedia('(hover: none)').matches;
+
       function updateButton() {
         toggle.setAttribute('aria-pressed', audio.muted ? 'false' : 'true');
         toggle.setAttribute('aria-label', audio.muted ? 'Attiva audio' : 'Disattiva audio');
         toggle.classList.toggle('is-muted', audio.muted);
         toggle.classList.toggle('is-playing', !audio.muted);
+        if (touchUI) {
+          panel.classList.toggle('is-open', !audio.muted);
+        }
+      }
+
+      // Selezione esplicita di una traccia: attiva sempre l'audio
+      function selectTrack(index) {
+        if (audio.muted) {
+          audio.muted = false;
+          updateButton();
+        }
+        loadTrack(index, true);
       }
 
       // Parte sempre muto (autoplay garantito), primo click dell'utente sblocca l'audio
@@ -62,22 +77,40 @@
       audio.addEventListener('volumechange', updateButton);
 
       prevBtn.addEventListener('click', function () {
-        loadTrack((currentIndex - 1 + TRACKS.length) % TRACKS.length, true);
+        selectTrack((currentIndex - 1 + TRACKS.length) % TRACKS.length);
       });
 
       nextBtn.addEventListener('click', function () {
-        loadTrack((currentIndex + 1) % TRACKS.length, true);
+        selectTrack((currentIndex + 1) % TRACKS.length);
       });
 
       trackButtons.forEach(function (btn, i) {
         btn.addEventListener('click', function () {
-          loadTrack(i, true);
+          selectTrack(i);
         });
       });
 
       audio.addEventListener('ended', function () {
         loadTrack((currentIndex + 1) % TRACKS.length, true);
       });
+
+      // Feedback di buffering: "…" accanto al titolo finché la traccia non suona
+      audio.addEventListener('waiting', function () {
+        nowEl.classList.add('is-loading');
+      });
+      audio.addEventListener('playing', function () {
+        nowEl.classList.remove('is-loading');
+      });
+
+      // Touch: un tap fuori dal player chiude il pannello senza silenziare
+      if (touchUI) {
+        var player = document.getElementById('audio-player');
+        document.addEventListener('click', function (e) {
+          if (player && !player.contains(e.target)) {
+            panel.classList.remove('is-open');
+          }
+        });
+      }
     })();
 
     (function () {
